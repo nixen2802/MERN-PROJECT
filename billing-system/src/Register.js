@@ -1,42 +1,10 @@
-// import './Register.css';
-// import axios from 'axios';
-// function clicked(e){
-//     alert("Something");
-//     axios.post('http://localhost:5000/register')
-//         .then(res=>console.log(res.data));
-//     e.preventDefault();
-// }
-// function Register(){
-//     return(
-//         <div>
-//         <form onSubmit={clicked}>
-//             <div className="form-group text-left">
-//                 <label>Email address</label>
-//                 <input type="email" id="email" name="email" placeholder="Enter email"/>
-//             </div>
-//             <div className="form-group text-left">
-//                 <label>Password</label>
-//                 <input type="password" id="password" placeholder="Password"/>
-//             </div>
-//             <div className="form-group text-left">
-//                 <label>Confirm Password</label>
-//                 <input type="password" id="confirmPassword" placeholder="Confirm Password" />
-//             </div>
-//             <button type="submit" className="btn btn-primary">Register</button>
-//         </form>
-//         </div>
-//     )
-// }
-// export default Register;
-
-
+import './Register.css'
 import React, { Component } from 'react';
 import axios from 'axios';
-
 class Register extends Component {
   constructor(props) {
     super(props);
-    this.handleInputChange=this.handleSubmit.bind(this);
+    // this.handleInputChange=this.handleSubmit.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
     this.state = {
       email: '',
@@ -61,10 +29,25 @@ class Register extends Component {
       password,
       conpassword,
     };
-
+    this.setState({
+      email: "",
+      password:"",
+      conpassword:""
+    });
     axios
       .post('http://localhost:5000/register',user)
-      .then(() => console.log('User created'))
+      .then((result) =>{
+        console.log(result.data)
+        if(result.data==="Success")
+        {
+          this.props.history.push('/login')
+        }
+        else
+        {
+          alert("You have enetered something wrong!!!")
+        }
+      }
+      )
       .catch(err => {
         console.error(err);
       });
@@ -83,6 +66,7 @@ class Register extends Component {
                 name="email"
                 placeholder="Email"
                 onChange={this.handleInputChange}
+                value={this.state.email}
               />
             </div>
             <br />
@@ -93,6 +77,7 @@ class Register extends Component {
                 name="password"
                 placeholder="Password"
                 onChange={this.handleInputChange}
+                value={this.state.password}
               />
             </div>
             <br />
@@ -103,12 +88,13 @@ class Register extends Component {
                 name="conpassword"
                 placeholder="Confirm password"
                 onChange={this.handleInputChange}
+                value={this.state.conpassword}
               />
             </div>
             <br />
             <div style={{ width: '30%' }}>
               <button className="btn btn-success" type="submit">
-                Create
+                Register
               </button>
             </div>
           </form>
