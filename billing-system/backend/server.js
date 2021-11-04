@@ -91,6 +91,76 @@ app.post("/register", (req, res) => {
 		res.end("Failure");
 	}
 });
+app.get('/fetch',(req,res)=>{
+	Mclient.connect(url, (err, db) => {
+		if (err) 
+		{
+			console.log(err);
+			throw err;
+		} 
+		else 
+		{
+			var dbase = db.db("Billing-System");
+			dbase
+				.collection("Bills")
+				.find({})
+				.toArray((err, result) => {
+					if (err) {
+						console.log(err);
+					} 
+					else {
+						res.send(result);
+						}
+						db.close();
+					})
+		}
+	});
+})
+app.post('/addbill',(req,res)=>{
+	const name = req.body.name;
+	const quantity = req.body.quantity;
+	const hsn_no = req.body.hsn_no;
+	const price = req.body.price;
+	Mclient.connect(url, (err, db) => {
+		if (err) {
+			console.log(err);
+			throw err;
+		} else {
+			var obj = { name: name, quantity: quantity, hsn_no: hsn_no, price: price };
+			var dbase = db.db("Billing-System");
+			dbase
+				.collection("Bills")
+				.find({})
+				.toArray((err, result) => {
+					if (err) {
+						console.log(err);
+					} else {
+						let flag = false;
+						for (let i = 0; i < result.length; i++) {
+							if (result[i].hsn_no == hsn_no) {
+								flag = true;
+								break;
+							}
+						}
+						if (flag) {
+							res.send("Failure");
+						} else {
+							dbase
+								.collection("Bills")
+								.insertOne(obj, (err, result) => {
+									if (err) {
+										console.log(err);
+									} else {
+										res.send("Success");
+										db.close();
+									}
+								});
+						}
+					}
+				});
+		}
+	});
+})
 app.listen(5000, (req, res) => {
 	console.log("Server listening on port 5000!!!");
 });

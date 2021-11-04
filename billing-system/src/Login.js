@@ -1,4 +1,5 @@
 import "./Login.css";
+import {Link} from 'react-router-dom';
 import React, { Component } from "react";
 import axios from "axios";
 import img_logo from "./images/img-01.png";
@@ -125,13 +126,13 @@ class Register extends Component {
 									class="text-center"
 									style={{ paddingTop: "136px" }}
 								>
-									<a class="txt2" href="#">
-										Create your Account
+								<Link to={'/register'}>
+								Create your Account
 										<i
 											class="fa fa-long-arrow-right m-l-5"
 											aria-hidden="true"
 										></i>
-									</a>
+								</Link>
 								</div>
 							</form>
 						</div>
