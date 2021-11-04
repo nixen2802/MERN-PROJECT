@@ -9,7 +9,6 @@ export default class Detials extends React.Component{
             value:this.props.location.state,
             bills: []
         }
-        console.log(this.props.location.state)
     }
     componentDidMount() {
         axios.get('http://localhost:5000/fetch').then((result)=>{
@@ -26,12 +25,41 @@ render(){
           <p>{bill.price}</p>
         </div>
       ));
+      const values=this.state.value;
+      function renderElement(){
+        if(values.email==="nayanmandaliya01@gmail.com")
+        {
+            return(
+                <div>
+                <Link to={{
+                    pathname: "/showproducts",
+                    state: values // your data array of objects
+                  }}>
+                    <button className="btn btn-outline-secondary">View Products</button>
+                </Link>
+                </div>
+                )
+        }
+        return null;
+     }
+     
 return (
     <div>
         {bill}
         <div>
-            <Link to={'/addbill'}>
+        <Link to={{
+            pathname: "/addbill",
+            state: values
+          }}>
             Add bill
+            </Link>
+        </div>
+        <div>
+            { renderElement() }
+        </div>
+        <div>
+            <Link to={'/'}>
+            Logout
             </Link>
       </div>
     </div>

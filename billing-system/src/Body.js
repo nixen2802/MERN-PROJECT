@@ -4,7 +4,9 @@ import Home from './Home';
 import Register from './Register';
 import Login from './Login';
 import Show from './Show';
-import Addbill from './Addbill'
+import Addbill from './Addbill';
+import Showproducts from './Showproducts';
+import Addproducts from './Addproducts';
 function Body(){
     return(
     <div id='body'>
@@ -15,6 +17,8 @@ function Body(){
         <Route exact path="/login" component={Login} />
         <Route exact path="/show" component={Show} />
         <Route exact path="/addbill" component={Addbill} />
+        <Route exact path="/showproducts" component={Showproducts} />
+        <Route exact path="/addproducts" component={Addproducts} />
       </BrowserRouter>
     </div>
         

@@ -161,6 +161,55 @@ app.post('/addbill',(req,res)=>{
 		}
 	});
 })
+app.get('/fetch_products',(req,res)=>{
+	Mclient.connect(url, (err, db) => {
+		if (err) 
+		{
+			console.log(err);
+			throw err;
+		} 
+		else 
+		{
+			var dbase = db.db("Billing-System");
+			dbase
+				.collection("Products")
+				.find({})
+				.toArray((err, result) => {
+					if (err) {
+						console.log(err);
+					} 
+					else {
+						res.send(result);
+						}
+						db.close();
+					})
+		}
+	});
+})
+app.post('/addproducts',(req,res)=>{
+	const name = req.body.name;
+	const price = req.body.price;
+	Mclient.connect(url, (err, db) => {
+		if (err) {
+			console.log(err);
+			throw err;
+		} else {
+			var obj = { name: name, price: price };
+			var dbase = db.db("Billing-System");
+			dbase
+				.collection("Products")
+				.insertOne(obj, (err, result) => {
+					if (err) {
+						res.send("Failure")
+						console.log(err);
+					} else {
+						res.send("Success");
+						db.close();
+					}
+				});
+		}
+	});
+})
 app.listen(5000, (req, res) => {
 	console.log("Server listening on port 5000!!!");
 });
