@@ -2,6 +2,7 @@ import "./Register.css";
 import React, { Component } from "react";
 import axios from "axios";
 import img_logo from "./images/img-01.png";
+import { Link } from "react-router-dom";
 class Register extends Component {
 	constructor(props) {
 		super(props);
@@ -136,7 +137,14 @@ class Register extends Component {
 									style={{ paddingTop: "12px" }}
 								>
 									<span class="txt1">Forgot</span>
-									<a class="txt2" href="#">
+									<a
+										class="txt2"
+										href="#"
+										style={{
+											textDecoration: "none",
+											paddingLeft: "10px",
+										}}
+									>
 										Username / Password?
 									</a>
 								</div>
@@ -144,13 +152,19 @@ class Register extends Component {
 									class="text-center"
 									style={{ paddingTop: "136px" }}
 								>
-									<a class="txt2" href="#">
-										Create your Account
+									<Link
+										to={"/login"}
+										class="txt2"
+										href="#"
+										style={{ textDecoration: "none" }}
+									>
+										Already have an account? Login
 										<i
 											class="fa fa-long-arrow-right m-l-5"
 											aria-hidden="true"
+											style={{ paddingLeft: "10px" }}
 										></i>
-									</a>
+									</Link>
 								</div>
 							</form>
 						</div>
