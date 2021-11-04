@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 var Mclient = require("mongodb").MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb+srv://admin:1234@cluster0.fm3ut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
