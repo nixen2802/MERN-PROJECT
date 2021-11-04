@@ -1,5 +1,6 @@
 import "./Login.css";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import img_logo from "./images/img-01.png";
 class Register extends Component {
@@ -117,7 +118,14 @@ class Register extends Component {
 									style={{ paddingTop: "12px" }}
 								>
 									<span class="txt1">Forgot</span>
-									<a class="txt2" href="#">
+									<a
+										class="txt2"
+										href="#"
+										style={{
+											textDecoration: "none",
+											paddingLeft: "10px",
+										}}
+									>
 										Username / Password?
 									</a>
 								</div>
@@ -125,13 +133,19 @@ class Register extends Component {
 									class="text-center"
 									style={{ paddingTop: "136px" }}
 								>
-									<a class="txt2" href="#">
+									<Link
+										to={"/register"}
+										class="txt2"
+										href="#"
+										style={{ textDecoration: "none" }}
+									>
 										Create your Account
 										<i
 											class="fa fa-long-arrow-right m-l-5"
 											aria-hidden="true"
+											style={{ paddingLeft: "10px" }}
 										></i>
-									</a>
+									</Link>
 								</div>
 							</form>
 						</div>
