@@ -7,6 +7,7 @@ import Show from './Show';
 import Addbill from './Addbill';
 import Showproducts from './Showproducts';
 import Addproducts from './Addproducts';
+import Showbill from './Showbill';
 function Body(){
     return(
     <div id='body'>
@@ -19,6 +20,7 @@ function Body(){
         <Route exact path="/addbill" component={Addbill} />
         <Route exact path="/showproducts" component={Showproducts} />
         <Route exact path="/addproducts" component={Addproducts} />
+        <Route exact path="/showbill/:id" component={Showbill} />
       </BrowserRouter>
     </div>
         

@@ -1,5 +1,5 @@
 import './Show.css';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import React from 'react'
 import axios from 'axios';
 export default class Detials extends React.Component{
@@ -18,14 +18,18 @@ export default class Detials extends React.Component{
         })
       }
 render(){
+  const values=this.state.value;
     const bill = this.state.bills.map(bill => (
         <div style={{ border: "1px solid black" }} key={bill._id}>
-          <h3>{bill.name}</h3>
-          <p>{bill.quantity}</p>
-          <p>{bill.price}</p>
+        <Link to={{
+          pathname: `/showbill/${bill.billlnumber}`,
+          state: values}}>
+          <h3>{bill.billlnumber}</h3>
+          <p>{bill.company_name}</p>
+          <p>{bill.total_amount}</p>
+          </Link>
         </div>
       ));
-      const values=this.state.value;
       function renderElement(){
         if(values.email==="nayanmandaliya01@gmail.com")
         {
