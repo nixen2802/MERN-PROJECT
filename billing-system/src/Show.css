@@ -1,3 +1,14 @@
-#demo{
-    background-color: red;
+#demo {
+	background-color: red;
+}
+
+.card-text {
+	margin-bottom: 10px;
+}
+
+.card-footer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
 }
