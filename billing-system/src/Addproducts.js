@@ -9,7 +9,9 @@ class Addproduct extends Component {
 		this.state = {
 			value:this.props.location.state,
 			name: "",
-			price: ""
+			item_code: Math.floor(Math.random() * (10000001)),
+			price: "",
+			hsn_code: Math.floor(Math.random() * (9999)),
 		};
 	}
 
@@ -22,14 +24,16 @@ class Addproduct extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		const { name, price } = this.state;
+		const { name, item_code, price, hsn_code } = this.state;
 
 		const product = {
-			name, price
+			name, item_code, price, hsn_code 
 		};
 		this.setState({
 			name: "",
-            price: ""
+			item_code: "",
+            price: "",
+			hsn_code: ""
 		});
 		axios
 			.post("http://localhost:5000/addproducts", product)
@@ -62,6 +66,9 @@ class Addproduct extends Component {
 								<span class="login100-form-title">
 									Add Product
 								</span>
+								<div>
+									<p>Item Code : {this.state.item_code}</p>
+								</div>
 								<div
 									class="wrap-input100 validate-input"
 								>
@@ -80,6 +87,9 @@ class Addproduct extends Component {
 											aria-hidden="true"
 										></i>
 									</span>
+								</div>
+								<div>
+									<p>HSN Code : {this.state.hsn_code}</p>
 								</div>
                                 <div
 									class="wrap-input100 validate-input"

@@ -1,8 +1,8 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
-import img1 from "./img/team/team-1.jpg";
-import img2 from "./img/team/team-2.jpg";
-import img3 from "./img/team/team-3.jpg";
+import img1 from "./img/team/hussein.jpeg";
+import img2 from "./img/team/nayan.jpeg";
+import img3 from "./img/team/rushabh.jpeg";
 function Home() {
 	return (
 		// <div>

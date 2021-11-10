@@ -224,7 +224,6 @@ class Addbill extends Component {
 		this.setState(({
 		  billValues: [...this.state.billValues, {name: "",
 		  quantity: "",
-		  hsn_no: "",
 		  price: "",}]
 		}))
 	  }
@@ -307,14 +306,6 @@ class Addbill extends Component {
 										placeholder="Quantity"
 										onChange={e=>this.handleInputChange(index,e)}
 										value={element.quantity || ""}
-									/>
-									<input
-										class="input100"
-										type="number"
-										name="hsn_no"
-										placeholder="HSN NO."
-										onChange={e=>this.handleInputChange(index,e)}
-										value={element.hsn_no || ""}
 									/>
 									<input
 										class="input100"

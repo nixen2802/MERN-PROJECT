@@ -22,6 +22,8 @@ render(){
         <div style={{ border: "1px solid black" }} key={product._id}>
           <h3>{product.name}</h3>
           <p>{product.price}</p>
+          <p>Item Code: {product.item_code}</p>
+          <p>HSN Code: {product.hsn_code}</p>
         </div>
       ));
      
