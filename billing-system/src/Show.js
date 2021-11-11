@@ -8,6 +8,7 @@ export default class Detials extends React.Component {
 		this.state = {
 			value: this.props.location.state,
 			bills: [],
+			customer: []
 		};
 	}
 	componentDidMount() {
@@ -20,53 +21,63 @@ export default class Detials extends React.Component {
 	render() {
 		const values = this.state.value;
 		const bill = this.state.bills.map((bill) => (
-			// <div style={{ border: "1px solid black" }} key={bill._id}>
-			// <Link to={{
-			//   pathname: `/showbill/${bill.billlnumber}`,
-			//   state: values}}>
-			//   <h3>{bill.billlnumber}</h3>
-			//   <p>{bill.company_name}</p>
-			//   <p>{bill.total_amount}</p>
-			//   </Link>
-			// </div>
-			<div className="col-lg-3 col-md-12 col-xl-3">
-				<div class="card" key={bill._id} style={{ marginTop: "15px" }}>
-					<div class="card-header">
-						Bill Number : {bill.billlnumber}
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">{bill.company_name}</h5>
-						<p class="card-text">
-							With supporting text below as a natural lead-in to
-							additional content.
-						</p>
-						<Link
-							to={{
-								pathname: `/showbill/${bill.billlnumber}`,
-								state: values,
-							}}
-							className="btn"
-							style={{
-								backgroundColor: "#9053c7",
-								color: "white",
-							}}
-						>
-							₹{bill.total_amount}
-						</Link>
-					</div>
-					<div class="card-footer">
-						<Link
-							to={{
-								pathname: `/showbill/${bill.billlnumber}`,
-								state: values,
-							}}
-							className="btn btn-outline-primary"
-						>
-							More Info
-						</Link>
-					</div>
+			<div key={bill._id}>
+			<Link
+			to={{
+				pathname: `/showbill/${bill.billnumber}`,
+				state: values,
+			}}>
+				<div>
+					<p>Bill Number : {bill.billnumber}</p>
+					<p>Customer Name : {bill.customer_name}</p>
+					<p>Date Of Supply : {bill.date_of_supply}</p>
+					<p>Total Amount : {bill.total_amount}</p>
+					<p>GST : {bill.gst}</p>
+					<p>Place Of Supply : {bill.place_of_supply}</p>
+					<p>Transporter Info : {bill.transporter_info}</p>
+					<p>GST NO : {bill.gst_no}</p>
+					<p>Billing address : {bill.billing_address}</p>
 				</div>
+			</Link>
 			</div>
+			// <div className="col-lg-3 col-md-12 col-xl-3">
+			// 	<div class="card" key={bill._id} style={{ marginTop: "15px" }}>
+			// 		<div class="card-header">
+			// 			Bill Number : {bill.billlnumber}
+			// 		</div>
+			// 		<div class="card-body">
+			// 			<h5 class="card-title">{bill.company_name}</h5>
+			// 			<p class="card-text">
+			// 				With supporting text below as a natural lead-in to
+			// 				additional content.
+			// 			</p>
+			// 			<Link
+			// 				to={{
+			// 					pathname: `/showbill/${bill.billlnumber}`,
+			// 					state: values,
+			// 				}}
+			// 				className="btn"
+			// 				style={{
+			// 					backgroundColor: "#9053c7",
+			// 					color: "white",
+			// 				}}
+			// 			>
+			// 				₹{bill.total_amount}
+			// 			</Link>
+			// 		</div>
+			// 		<div class="card-footer">
+			// 			<Link
+			// 				to={{
+			// 					pathname: `/showbill/${bill.billlnumber}`,
+			// 					state: values,
+			// 				}}
+			// 				className="btn btn-outline-primary"
+			// 			>
+			// 				More Info
+			// 			</Link>
+			// 		</div>
+			// 	</div>
+			// </div>
 		));
 		function renderElement() {
 			if (values.email === "nayanmandaliya01@gmail.com") {
@@ -80,6 +91,16 @@ export default class Detials extends React.Component {
 						>
 							<button className="btn btn-outline-secondary">
 								View Products
+							</button>
+						</Link>
+						<Link
+							to={{
+								pathname: "/showcustomer",
+								state: values, // your data array of objects
+							}}
+						>
+							<button className="btn btn-outline-secondary">
+								View Customers
 							</button>
 						</Link>
 					</div>

@@ -1,17 +1,16 @@
-import './Addproducts.css';
+import './Addcustomer.css';
 import React, { Component } from "react";
 import axios from "axios";
-class Addproduct extends Component {
+class Addcustomer extends Component {
 	constructor(props) {
 		super(props);
 		// this.handleInputChange=this.handleSubmit.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.state = {
 			value:this.props.location.state,
-			name: "",
-			item_code: Math.floor(Math.random() * (10000001)),
-			price: "",
-			hsn_code: ""
+			cust_name: "",
+			gst_no: "",
+			billing_address: ""
 		};
 	}
 
@@ -24,24 +23,23 @@ class Addproduct extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		const { name, item_code, price, hsn_code } = this.state;
+		const { cust_name, gst_no, billing_address } = this.state;
 
-		const product = {
-			name, item_code, price, hsn_code 
+		const customer = {
+			cust_name, gst_no, billing_address 
 		};
 		this.setState({
-			name: "",
-			item_code: "",
-            price: "",
-			hsn_code: ""
+			cust_name: "",
+			gst_no: "",
+			billing_address: ""
 		});
 		axios
-			.post("http://localhost:5000/addproducts", product)
+			.post("http://localhost:5000/addcustomer", customer)
 			.then((result) => {
 				console.log(result.data);
 				if (result.data === "Success") {
 					this.props.history.push({
-						pathname: '/showproducts',
+						pathname: '/showcustomer',
 						  state: this.state.value // your data array of objects
 					  })
 				} else {
@@ -64,21 +62,18 @@ class Addproduct extends Component {
 								onSubmit={this.handleSubmit}
 							>
 								<span class="login100-form-title">
-									Add Product
+									Add Customer
 								</span>
-								<div>
-									<p>Item Code : {this.state.item_code}</p>
-								</div>
 								<div
 									class="wrap-input100 validate-input"
 								>
 									<input
 										class="input100"
 										type="text"
-										name="name"
-										placeholder="Product Name"
+										name="cust_name"
+										placeholder="Customer Name"
 										onChange={this.handleInputChange}
-										value={this.state.name}
+										value={this.state.cust_name}
 									/>
 									<span class="focus-input100"></span>
 									<span class="symbol-input100">
@@ -88,28 +83,35 @@ class Addproduct extends Component {
 										></i>
 									</span>
 								</div>
-								<div>
-								<input
-										class="input100"
-										type="number"
-										name="hsn_code"
-										placeholder="HSN NO"
-										onChange={this.handleInputChange}
-										value={this.state.hsn_code}
-									/>
-								</div>
-								<br />
                                 <div
 									class="wrap-input100 validate-input"
 								>
 									<input
 										class="input100"
-										type="number"
-                                        step="0.01"
-										name="price"
-										placeholder="Price"
+										type="text"
+										name="gst_no"
+										placeholder="GST No."
 										onChange={this.handleInputChange}
-										value={this.state.price}
+										value={this.state.gst_no}
+									/>
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+										<i
+											class="fa fa-lock"
+											aria-hidden="true"
+										></i>
+									</span>
+								</div>
+                                <div
+									class="wrap-input100 validate-input"
+								>
+									<input
+										class="input100"
+										type="text"
+										name="billing_address"
+										placeholder="Billing Address"
+										onChange={this.handleInputChange}
+										value={this.state.billing_address}
 									/>
 									<span class="focus-input100"></span>
 									<span class="symbol-input100">
@@ -133,4 +135,4 @@ class Addproduct extends Component {
 	}
 }
 
-export default Addproduct;
+export default Addcustomer;

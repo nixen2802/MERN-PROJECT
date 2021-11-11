@@ -24,6 +24,9 @@ render(){
           <p>{product.price}</p>
           <p>Item Code: {product.item_code}</p>
           <p>HSN Code: {product.hsn_code}</p>
+          <Link to={{pathname: `/updateproduct/${product._id}`, state: {value: this.state.value, product: product}}}>
+                <h1>Update Product</h1>
+            </Link>
         </div>
       ));
      
