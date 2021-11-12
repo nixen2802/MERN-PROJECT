@@ -1,1 +1,3 @@
-# MERN-PROJECT
+# Billing System
+
+Mern mini project

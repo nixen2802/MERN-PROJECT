@@ -24,7 +24,12 @@ class Showbill extends React.Component {
 			value: this.props.location.state,
 			bills: [],
 			bill_details: [],
+<<<<<<< HEAD
 			total_amount: 0
+=======
+			total_amount: 0,
+			gst_value:0,
+>>>>>>> 7e1e91fd58e0b0234fa9c2fc8a20e01ddca32d55
 		};
 	}
 	componentDidMount() {
@@ -152,6 +157,11 @@ class Showbill extends React.Component {
 								<hr />
 								<div className="row row-content">{bill}</div>
 								<hr />
+								<div>
+									Total: {this.state.total_amount-this.state.gst_value}
+									<br />
+									GST : {this.state.gst_value}
+								</div>
 								<div class="row row-content">
 									<div
 										class="
