@@ -185,6 +185,7 @@ class Showbill extends React.Component {
 				this.setState({
 					bills: result.data,
 				});
+				console.log(this.state.bills);
 				// console.log(this.state.bills[0]);
 			});
 		axios

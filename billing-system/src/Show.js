@@ -21,26 +21,6 @@ export default class Detials extends React.Component {
 	render() {
 		const values = this.state.value;
 		const bill = this.state.bills.map((bill) => (
-			// <div key={bill._id}>
-			// 	<Link
-			// 		to={{
-			// 			pathname: `/showbill/${bill.billnumber}`,
-			// 			state: values,
-			// 		}}
-			// 	>
-			// 		<div>
-			// 			<p>Bill Number : {bill.billnumber}</p>
-			// 			<p>Customer Name : {bill.customer_name}</p>
-			// 			<p>Date Of Supply : {bill.date_of_supply}</p>
-			// 			<p>Total Amount : {bill.total_amount}</p>
-			// 			<p>GST : {bill.gst}</p>
-			// 			<p>Place Of Supply : {bill.place_of_supply}</p>
-			// 			<p>Transporter Info : {bill.transporter_info}</p>
-			// 			<p>GST NO : {bill.gst_no}</p>
-			// 			<p>Billing address : {bill.billing_address}</p>
-			// 		</div>
-			// 	</Link>
-			// </div>
 			<div className="col-xl-6 col-lg-6 col-md-12 col-xl-3">
 				<div
 					class="card customShadow"
