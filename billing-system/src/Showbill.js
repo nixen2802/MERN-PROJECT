@@ -24,7 +24,7 @@ class Showbill extends React.Component {
 			value: this.props.location.state,
 			bills: [],
 			bill_details: [],
-			total_amount: 0,
+			total_amount: 0
 		};
 	}
 	componentDidMount() {
@@ -49,7 +49,7 @@ class Showbill extends React.Component {
 				console.log("Somtsdvubsivdusuvdsvdviosdocvsnodcn");
 				console.log(this.state.bill_details);
 				this.setState({
-					total_amount: this.state.bill_details[0].total_amount,
+					total_amount: this.state.bill_details[0].total_amount
 				});
 			});
 	}
