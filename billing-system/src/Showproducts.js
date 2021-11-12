@@ -29,7 +29,7 @@ export default class Detials extends React.Component {
 			//     </Link>
 			// </div>
 			<div
-				className="col-xl-6 col-lg-6 col-md-12 col-xl-3"
+				className="col-xl-4 col-lg-4 col-md-6 col-xl-3"
 				key={product._id}
 			>
 				<div class="card customShadow" style={{ marginTop: "15px" }}>
@@ -66,18 +66,28 @@ export default class Detials extends React.Component {
 		));
 
 		return (
-			<div>
-				{product}
+			<div className="container">
+				<div className="row row-content">{product}</div>
 				<div>
 					<Link
 						to={{
 							pathname: "/addproducts",
 							state: this.state.value,
 						}}
+						className="btn btn-outline-secondary"
+						style={{
+							marginTop: "20px",
+							marginRight: "10px",
+							marginLeft: "20px",
+						}}
 					>
 						Add Product
 					</Link>
-					<Link to={{ pathname: "/show", state: this.state.value }}>
+					<Link
+						className="btn btn-outline-secondary"
+						to={{ pathname: "/show", state: this.state.value }}
+						style={{ marginTop: "20px" }}
+					>
 						Back to bills
 					</Link>
 				</div>
