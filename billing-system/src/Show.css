@@ -12,3 +12,16 @@
 	flex-wrap: nowrap;
 	justify-content: flex-end;
 }
+
+.billDetails {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+.customShadow {
+	box-shadow: 5px 10px 29px 0 rgb(68, 88, 144, 0.2);
+	transition: all 0.3s ease-in-out;
+	border-radius: 10px;
+}
