@@ -1,16 +1,3 @@
-// import { useParams } from 'react-router';
-// import './Showbill.css';
-// function Showbill(){
-//     const {id}=useParams();
-//     console.log(id);
-//     return(
-//         <div>
-//             This is the show bills page!!!
-//         </div>
-//     )
-// }
-// export default Showbill;
-
 import "./Showbill.css";
 import { Link, useParams, withRouter } from "react-router-dom";
 import React from "react";
@@ -288,129 +275,12 @@ class Showbill extends React.Component {
 					<span contentEditable>Each</span>
 				</td>
 				<td>
-					<span contentEditable>Rs.{bill.amount}</span>
+					<span contentEditable>Rs. {bill.amount}</span>
 				</td>
 			</tr>
-			// <div className="row row-content" key={bill._id}>
-			// 	<div
-			// 		class="placement
-			// 			col-lg-4
-			// 			col-md-4
-			// 			col-sm-4
-			// 			billItems
-			// 		"
-			// 	>
-			// 		{bill.product_name}
-			// 	</div>
-			// 	<div
-			// 		class="placement
-			// 			col-lg-4
-			// 			col-md-4
-			// 			col-sm-4
-			// 			"
-			// 	>
-			// 		{bill.quantity}
-			// 	</div>
-			// 	<div
-			// 		class="placement
-			// 			col-lg-4
-			// 			col-md-4
-			// 			col-sm-4
-			// 		"
-			// 	>
-			// 		{bill.amount}
-			// 	</div>
-			// </div>
 		));
 
 		return (
-			// <div className="container" style={{ marginTop: "8%" }}>
-			// 	<div className="row row-content">
-			// 		<div className="col-12">
-			// 			<h1 style={{ textAlign: "center", marginBottom: "2%" }}>
-			// 				Final Bill
-			// 			</h1>
-			// 			<div className="mainBill">
-			// 				<div
-			// 					className="customShadow card customCard"
-			// 					style={{ borderRadius: "6px" }}
-			// 				>
-			// 					{billdetails}
-			// 					<div class="row row-content">
-			// 						<div class="col-lg-4 col-md-4 col-sm-4 placement">
-			// 							<h4>Item</h4>
-			// 						</div>
-			// 						<div class="col-lg-4 col-md-4 col-sm-4 placement">
-			// 							<h4>Quantity</h4>
-			// 						</div>
-			// 						<div class="col-lg-4 col-md-4 col-sm-4 placement">
-			// 							<h4>Price</h4>
-			// 						</div>
-			// 					</div>
-			// 					<hr />
-			// 					<div className="row row-content">{bill}</div>
-			// 					<hr />
-			// 					<div>
-			// 						Total:{" "}
-			// 						{this.state.total_amount -
-			// 							this.state.gst_value}
-			// 						<br />
-			// 						GST : {this.state.gst_value}
-			// 					</div>
-			// 					<div class="row row-content">
-			// 						<div
-			// 							class="
-			// 							placement
-			// 									col-lg-4
-			// 									col-md-4
-			// 									col-sm-4
-			// 									col-xs-4
-			// 								"
-			// 						>
-			// 							TOTAL
-			// 						</div>
-			// 						<div
-			// 							class="
-			// 							placement
-			// 									col-lg-4
-			// 									col-md-4
-			// 									col-sm-4
-			// 									col-xs-4
-			// 								"
-			// 							style={{ marginLeft: "31%" }}
-			// 						>
-			// 							{this.state.total_amount}
-			// 						</div>
-			// 					</div>
-			// 					<div class="card-footer"></div>
-			// 				</div>
-			// 			</div>
-			// 		</div>
-			// 	</div>
-			// 	<div>
-			// 		<Link
-			// 			to={{
-			// 				pathname: "/show",
-			// 				state: values,
-			// 			}}
-			// 			className="btn btn-outline-secondary"
-			// 			style={{
-			// 				// backgroundColor: "#fcf93c",
-			// 				marginTop: "15px",
-			// 				marginRight: "15px",
-			// 				marginBottom: "15px",
-			// 			}}
-			// 		>
-			// 			Back to Home page
-			// 		</Link>
-			// 	</div>
-			// 	<button
-			// 		className="btn btn-outline-secondary"
-			// 		onClick={this.print}
-			// 	>
-			// 		Print
-			// 	</button>
-			// </div>
 			<div className="fullDetailedBill">
 				<h1 style={{ textAlign: "center" }}>
 					<span contentEditable>TAX INVOICE</span>
@@ -504,7 +374,7 @@ class Showbill extends React.Component {
 							</tr>
 							<tr>
 								<th style={{ fontSize: "x-small" }}>
-									<span contentEditable>Place of suplly</span>
+									<span contentEditable>Place of supply</span>
 								</th>
 								<td>
 									<span contentEditable>
@@ -562,7 +432,7 @@ class Showbill extends React.Component {
 								<td />
 								<td>
 									<span contentEditable>
-										{this.state.total_amount}
+										Rs. {this.state.total_amount}
 									</span>
 								</td>
 							</tr>
@@ -572,23 +442,31 @@ class Showbill extends React.Component {
 					<table>
 						<tbody>
 							<tr>
-								<td style={{ width: "50%" }} />
+								<td></td>
+								<td style={{ width: "25%" }} />
 								<th>
 									<span contentEditable>Total</span>
 								</th>
 								<td>
-									<span>Rs.</span>
+									<span>Rs. </span>
 									<span>{this.state.total_amount}</span>
 								</td>
 							</tr>
 							<tr>
-								<td
+								<th
 									style={{
-										width: "50%",
+										width: "25%",
 										textAlign: "center",
 									}}
 								>
-									:transport
+									Transport Info
+								</th>
+								<td
+									style={{
+										textAlign: "center",
+									}}
+								>
+									<span>{this.state.transporter_info}</span>
 								</td>
 								<th>
 									<span contentEditable>SGST 9%</span>
@@ -601,9 +479,10 @@ class Showbill extends React.Component {
 								</td>
 							</tr>
 							<tr>
+								<th>Container Info</th>
 								<td
 									style={{
-										width: "50%",
+										width: "25%",
 										textAlign: "center",
 									}}
 								>
@@ -620,7 +499,8 @@ class Showbill extends React.Component {
 								</td>
 							</tr>
 							<tr>
-								<td style={{ width: "50%" }} rowSpan={2}>
+								<th rowSpan={2}>Amount in words</th>
+								<td style={{ width: "25%" }} rowSpan={2}>
 									{numberToEnglish(
 										Math.round(
 											this.state.total_amount +
@@ -645,7 +525,7 @@ class Showbill extends React.Component {
 									<span contentEditable>G.Total</span>
 								</th>
 								<td>
-									<span>Rs.</span>
+									<span>Rs. </span>
 									<span>
 										{Math.round(
 											this.state.total_amount +
