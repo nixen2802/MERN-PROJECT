@@ -334,6 +334,22 @@ app.post("/updateproduct",(req,res)=>{
     });
 })
 
+// Delete customer
+app.post("/delete_customers",(req,res)=>{
+    const id=req.body.main_id;
+    console.log(req.body);
+    Customer.findOneAndDelete({_id: mongoose.mongo.ObjectId(id)}, (err, result)=> {
+        if(err)
+        {
+            res.end("Failure");
+        }
+        else
+        {
+            res.end("Success");
+        }
+    });
+})
+
 //Server started on port 5000
 app.listen(5000,()=>{
     console.log("Server listening on port 5000!!!");

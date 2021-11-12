@@ -5,8 +5,10 @@ import axios from 'axios';
 export default class Customer_Detials extends React.Component{
     constructor(props){
         super(props);
+        this.deleteCustomer=this.deleteCustomer.bind(this)
         this.state={
             value:this.props.location.state,
+            custid:"",
             customers: []
         }
     }
@@ -17,6 +19,22 @@ export default class Customer_Detials extends React.Component{
               });
         })
       }
+      deleteCustomer(cust_id){
+          
+          this.setState({
+            custid:cust_id
+          })
+          
+          const {custid}= this.state;
+          const customer = {main_id:cust_id};
+          console.log("custiddddd",cust_id);
+          axios.post('http://localhost:5000/delete_customers',customer).then((result)=>{
+              if(result.data=="Success"){
+                  alert("Customer deleted successfully")
+                  window.location="http://localhost:3000/showcustomer";
+              }
+          })
+      }
 render(){
     const customer = this.state.customers.map(customer => (
         <div style={{ border: "1px solid black" }} key={customer._id}>
@@ -26,6 +44,7 @@ render(){
           <Link to={{pathname: `/updatecustomer/${customer._id}`, state: {value: this.state.value, customer: customer}}}>
                 <h1>Update Customer</h1>
             </Link>
+            <button class="btn-primary btn" onClick={()=> this.deleteCustomer(customer._id)}>Delete customer</button>
         </div>
       ));
      
