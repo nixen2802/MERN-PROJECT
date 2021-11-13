@@ -5,10 +5,12 @@ import axios from "axios";
 export default class Detials extends React.Component {
 	constructor(props) {
 		super(props);
+		this.deleteBill = this.deleteBill.bind(this);
 		this.state = {
 			value: this.props.location.state,
 			bills: [],
 			customer: [],
+			bill_number: ""
 		};
 	}
 	componentDidMount() {
@@ -17,6 +19,27 @@ export default class Detials extends React.Component {
 				bills: result.data,
 			});
 		});
+	}
+	deleteBill(bill_no) {
+		this.setState({
+			bill_number: bill_no,
+		});
+
+		const { billid } = this.state;
+		const bill = { main_id: bill_no };
+		console.log("Temp printer : ",billid)
+		axios
+			.post("http://localhost:5000/delete_bill", bill)
+			.then((result) => {
+				if (result.data == "Success") {
+					alert("Bill deleted successfully");
+					window.location = "http://localhost:3000/show";
+				}
+				else
+				{
+					alert("There is some error with server please try again later!!!")
+				}
+			});
 	}
 	render() {
 		const values = this.state.value;
@@ -46,7 +69,7 @@ export default class Detials extends React.Component {
 							<div className="billDetailsValues">
 								<p>{bill.customer_name}</p>
 								<p>{bill.date_of_supply}</p>
-								<p>{bill.total_amount}</p>
+								<p>{bill.total_amount-bill.gst}</p>
 								<p>{bill.gst}</p>
 								<p>{bill.place_of_supply}</p>
 								<p>{bill.transporter_info}</p>
@@ -79,6 +102,13 @@ export default class Detials extends React.Component {
 						>
 							More Info
 						</Link>
+						<button
+							class="btn-outline-danger btn"
+							style={{ fontSize: "14px" }}
+							onClick={() => this.deleteBill(bill.billnumber)}
+						>
+							Delete Bill
+						</button>
 					</div>
 				</div>
 			</div>

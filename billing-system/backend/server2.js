@@ -211,6 +211,7 @@ app.get("/fetch_bills",(req,res)=>{
         else
         {
             res.json(data);
+            console.log(data);
             res.end();
         }
     })
@@ -346,6 +347,46 @@ app.post("/delete_customers",(req,res)=>{
         else
         {
             res.end("Success");
+        }
+    });
+})
+
+// Delete product
+app.post("/delete_product",(req,res)=>{
+    const id=req.body.main_id;
+    Product.findOneAndDelete({_id: mongoose.mongo.ObjectId(id)}, (err, result)=> {
+        if(err)
+        {
+            res.end("Failure");
+        }
+        else
+        {
+            res.end("Success");
+        }
+    });
+})
+
+// Delete bill
+app.post("/delete_bill",(req,res)=>{
+    const id=req.body.main_id;
+    console.log(id);
+    Mainbill.findOneAndDelete({billnumber: id}, (err, result)=> {
+        if(err)
+        {
+            res.end("Failure");
+        }
+        else
+        {
+            Bill.deleteMany({billnumber: id},(err,resu)=>{
+                if(err)
+                {
+                    res.end("Failure")
+                }
+                else
+                {
+                    res.end("Success");
+                }
+            })
         }
     });
 })

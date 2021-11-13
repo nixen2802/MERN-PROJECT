@@ -189,7 +189,7 @@ class Addbill extends Component {
 			transporter_info: "",
 			gst_no: "",
 			billing_address: "",
-			billValues: [{ product_name: "", quantity: "", amount: "" }],
+			billValues: [{ product_name: "", quantity: "", amount: "", hsn_code: "" }],
 			products: [],
 			customers: [],
 			values: this.props.location.state,
@@ -218,14 +218,10 @@ class Addbill extends Component {
 					this.state.products[i].name,
 					this.state.billValues[j].product_name
 				);
-				if (
-					this.state.products[i].name ==
-					this.state.billValues[j].product_name
-				) {
-					var amount =
-						this.state.products[i].price *
-						Number(this.state.billValues[j].quantity);
+				if (this.state.products[i].name == this.state.billValues[j].product_name) {
+					var amount = this.state.products[i].price * Number(this.state.billValues[j].quantity);
 					this.state.billValues[j].amount = amount;
+					this.state.billValues[j].hsn_code=this.state.products[i].hsn_code;
 					// if(this.state.quantity!="")
 					// {
 					this.setState({
@@ -242,7 +238,7 @@ class Addbill extends Component {
 		this.setState({
 			billValues: [
 				...this.state.billValues,
-				{ product_name: "", quantity: "", amount: "" },
+				{ product_name: "", quantity: "", amount: "", hsn_code:"" },
 			],
 		});
 	}
@@ -426,7 +422,7 @@ class Addbill extends Component {
 								))}
 								<div className="button-section">
 									<button
-										className="button add"
+										className="button add-bu"
 										type="button"
 										onClick={() => this.addFormFields()}
 									>

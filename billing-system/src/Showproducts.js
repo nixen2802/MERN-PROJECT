@@ -5,10 +5,28 @@ import axios from "axios";
 export default class Detials extends React.Component {
 	constructor(props) {
 		super(props);
+		this.deleteProduct = this.deleteProduct.bind(this);
 		this.state = {
 			value: this.props.location.state,
+			prodid: "",
 			products: [],
 		};
+	}
+	deleteProduct(prod_id) {
+		this.setState({
+			prodid: prod_id,
+		});
+
+		const { prodid } = this.state;
+		const product = { main_id: prod_id };
+		axios
+			.post("http://localhost:5000/delete_product", product)
+			.then((result) => {
+				if (result.data == "Success") {
+					alert("Product deleted successfully");
+					window.location = "http://localhost:3000/showproducts";
+				}
+			});
 	}
 	componentDidMount() {
 		axios.get("http://localhost:5000/fetch_products").then((result) => {
@@ -60,6 +78,13 @@ export default class Detials extends React.Component {
 						>
 							Update Product
 						</Link>
+						<button
+							class="btn-outline-danger btn"
+							style={{ fontSize: "14px" }}
+							onClick={() => this.deleteProduct(product._id)}
+						>
+							Delete Product
+						</button>
 					</div>
 				</div>
 			</div>

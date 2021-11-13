@@ -351,3 +351,8 @@ tr:hover .cut {
 	margin-left: 10%;
 	margin-top: 3%;
 }
+@media print {
+	.noPrint{
+	  display:none;
+	}
+  }

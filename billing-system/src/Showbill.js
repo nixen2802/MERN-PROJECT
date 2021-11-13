@@ -3,6 +3,8 @@ import { Link, useParams, withRouter } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 import number_to_word from "number-to-words";
+import print from 'print-js';
+import printJS from "print-js";
 
 function numberToEnglish(n, custom_join_character) {
 	var string = n.toString(),
@@ -258,36 +260,37 @@ class Showbill extends React.Component {
 		const bill = this.state.bills.map((bill) => (
 			<tr key={bill._id}>
 				<td style={{ width: "5%" }}>
-					<span contentEditable>{count++}</span>
+					<span >{count++}</span>
 				</td>
 				<td style={{ width: "50%" }}>
-					<span contentEditable>{bill.product_name}</span>
+					<span >{bill.product_name}</span>
 				</td>
 				<td style={{ width: "8%" }}>
-					<span contentEditable>:hsn_code</span>
+					<span >{bill.hsn_code}</span>
 				</td>
 				<td style={{ width: "8%" }}>
-					<span contentEditable>{bill.quantity}</span>
+					<span >{bill.quantity}</span>
 				</td>
 				<td>
-					<span contentEditable>{bill.amount / bill.quantity}</span>
+					<span >{bill.amount / bill.quantity}</span>
 				</td>
 				<td>
-					<span contentEditable>Each</span>
+					<span >Each</span>
 				</td>
 				<td>
-					<span contentEditable>Rs. {bill.amount}</span>
+					<span >Rs. {bill.amount}</span>
 				</td>
 			</tr>
 		));
 
 		return (
 			<div className="fullDetailedBill">
+			<div id="printrer">
 				<h1 style={{ textAlign: "center" }}>
-					<span contentEditable>TAX INVOICE</span>
+					<span >TAX INVOICE</span>
 				</h1>
 				<article style={{ paddingBottom: "0%", marginBottom: "0%" }}>
-					<address contentEditable style={{ width: "40%" }}>
+					<address  style={{ width: "40%" }}>
 						<p style={{ fontSize: "medium" }}>
 							Customer Name : {this.state.customer_name}
 							<br />
@@ -303,70 +306,18 @@ class Showbill extends React.Component {
 						<tbody>
 							<tr>
 								<th>
-									<span contentEditable>Invoice No.</span>
+									<span >Invoice No.</span>
 								</th>
 								<td>
-									<span contentEditable>
-										:invoice_id/{this.state.year}
+									<span >
+										{this.state.billnumber}
 									</span>
 								</td>
 								<th>
-									<span contentEditable>Date:</span>
+									<span >Date:</span>
 								</th>
 								<td>
-									<span contentEditable>
-										{this.state.date_of_supply
-											.toString()
-											.slice(0, 10)}
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<th>
-									<span contentEditable>Challan No.</span>
-								</th>
-								<td>
-									<span contentEditable>
-										:invoice_id/{this.state.year}
-									</span>
-								</td>
-								<th>
-									<span contentEditable>Date:</span>
-								</th>
-								<td>
-									<span contentEditable>
-										{this.state.date_of_supply
-											.toString()
-											.slice(0, 10)}
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<th>
-									<span contentEditable>Order No.</span>
-								</th>
-								<td>
-									<span contentEditable>:order_number</span>
-								</td>
-								<th>
-									<span contentEditable>Date:</span>
-								</th>
-								<td>
-									<span contentEditable>:order_date</span>
-								</td>
-							</tr>
-							<tr>
-								<th>
-									<span contentEditable>LR. No.</span>
-								</th>
-								<td>
-									<span contentEditable />
-								</td>
-								<th>
-									<span contentEditable>Date:</span>
-								</th>
-								<td>
-									<span contentEditable>
+									<span >
 										{this.state.date_of_supply
 											.toString()
 											.slice(0, 10)}
@@ -375,18 +326,12 @@ class Showbill extends React.Component {
 							</tr>
 							<tr>
 								<th style={{ fontSize: "x-small" }}>
-									<span contentEditable>Place of supply</span>
+									<span >Place of supply</span>
 								</th>
 								<td>
-									<span contentEditable>
-										:place_of_supply
+									<span >
+										{this.state.place_of_supply}
 									</span>
-								</td>
-								<th>
-									<span contentEditable>code</span>
-								</th>
-								<td>
-									<span contentEditable>:place_code</span>
 								</td>
 							</tr>
 						</tbody>
@@ -395,31 +340,31 @@ class Showbill extends React.Component {
 						<thead>
 							<tr>
 								<th style={{ width: "5%" }}>
-									<span contentEditable>SNO</span>
+									<span >SNO</span>
 								</th>
 								<th style={{ width: "30%" }}>
-									<span contentEditable>Description</span>
+									<span >Description</span>
 								</th>
 								<th style={{ width: "12%" }}>
-									<span contentEditable>HSN</span>
+									<span >HSN</span>
 								</th>
 								<th style={{ width: "8%" }}>
-									<span contentEditable>Quantity (Nos)</span>
+									<span >Quantity (Nos)</span>
 								</th>
 								<th style={{ width: "9%" }}>
-									<span contentEditable>Rate</span>
+									<span >Rate</span>
 								</th>
 								<th style={{ width: "7%" }}>
-									<span contentEditable>Per</span>
+									<span >Per</span>
 								</th>
 								<th style={{ width: "14%" }}>
-									<span contentEditable>Total</span>
+									<span >Total</span>
 								</th>
-								{/* <th><span contenteditable>Item</span></th>
-							<th><span contenteditable>Description</span></th>
-							<th><span contenteditable>Rate</span></th>
-							<th><span contenteditable>Quantity</span></th>
-							<th><span contenteditable>Price</span></th> */}
+								{/* <th><span >Item</span></th>
+							<th><span >Description</span></th>
+							<th><span >Rate</span></th>
+							<th><span >Quantity</span></th>
+							<th><span >Price</span></th> */}
 							</tr>
 						</thead>
 						<tbody>
@@ -432,8 +377,8 @@ class Showbill extends React.Component {
 								<td />
 								<td />
 								<td>
-									<span contentEditable>
-										Rs. {this.state.total_amount}
+									<span >
+										Rs. {this.state.total_amount-this.state.gst}
 									</span>
 								</td>
 							</tr>
@@ -443,18 +388,7 @@ class Showbill extends React.Component {
 					<table>
 						<tbody>
 							<tr>
-								<td></td>
-								<td style={{ width: "25%" }} />
-								<th>
-									<span contentEditable>Total</span>
-								</th>
-								<td>
-									<span>Rs. </span>
-									<span>{this.state.total_amount}</span>
-								</td>
-							</tr>
-							<tr>
-								<th
+							<th
 									style={{
 										width: "25%",
 										textAlign: "center",
@@ -470,69 +404,41 @@ class Showbill extends React.Component {
 									<span>{this.state.transporter_info}</span>
 								</td>
 								<th>
-									<span contentEditable>SGST 9%</span>
+									<span >Total</span>
 								</th>
 								<td>
-									<span />
-									<span contentEditable>
-										{this.state.sgst_amount}
-									</span>
+									<span>Rs. </span>
+									<span>{this.state.total_amount-this.state.gst}</span>
 								</td>
 							</tr>
 							<tr>
-								<th>Container Info</th>
-								<td
-									style={{
-										width: "25%",
-										textAlign: "center",
-									}}
-								>
-									(:cartons cartons :bundles)
-								</td>
+							<th rowSpan={2}>Amount in words</th>
+							<td style={{ width: "25%" }} rowSpan={2}>
+								{numberToEnglish(
+									Math.round(
+										this.state.total_amount
+									)
+								)}
+							</td>
 								<th>
-									<span contentEditable>CGST 9%</span>
+									<span >GST 18%</span>
 								</th>
 								<td>
-									<span />
-									<span contentEditable>
-										{this.state.cgst_amount}
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<th rowSpan={2}>Amount in words</th>
-								<td style={{ width: "25%" }} rowSpan={2}>
-									{numberToEnglish(
-										Math.round(
-											this.state.total_amount +
-												this.state.sgst_amount +
-												this.state.cgst_amount +
-												this.state.igst_amount
-										)
-									)}
-								</td>
-								<th>
-									<span contentEditable>IGST 18%</span>
-								</th>
-								<td>
-									<span />
-									<span contentEditable>
-										{this.state.igst_amount}
+								<span>Rs. </span>
+									<span >
+										{this.state.gst}
 									</span>
 								</td>
 							</tr>
 							<tr>
 								<th>
-									<span contentEditable>G.Total</span>
+									<span >G.Total</span>
 								</th>
 								<td>
 									<span>Rs. </span>
 									<span>
 										{Math.round(
-											this.state.total_amount +
-												this.state.sgst_amount +
-												this.state.cgst_amount +
-												this.state.igst_amount
+											this.state.total_amount
 										)}
 									</span>
 								</td>
@@ -546,14 +452,14 @@ class Showbill extends React.Component {
 						<tr>
 							<td style={{ width: "40%" }}>
 								{" "}
-								<span contentEditable>
-									GST NO: {this.state.gst_no}
+								<span >
+									GST NO: HSN2132HSN343
 								</span>
 							</td>
 							<td> </td>
 							<td style={{ width: "32%" }}>
 								{" "}
-								<span contentEditable />
+								<span  />
 								Payment Terms within……30…Days
 							</td>
 						</tr>
@@ -564,7 +470,7 @@ class Showbill extends React.Component {
 						<tbody>
 							<tr>
 								<td style={{ width: "40%" }} rowSpan={4}>
-									<span contentEditable>
+									<span >
 										Terms: <br /> 1) Goods once sold will
 										not be taken back. <br /> 2)Sellers will
 										not accept any responsibility or admit
@@ -576,23 +482,23 @@ class Showbill extends React.Component {
 									</span>
 								</td>
 								<td rowSpan={4} style={{ textAlign: "center" }}>
-									<span contentEditable>
+									<span >
 										<h2> COMPANY'S BANK DETAILS</h2>
 										<br />
-										BANK NAME:BANK OF BARODA <br />
-										A/C NO: 19750200000831
+										BANK NAME:BANK OF HSN <br />
+										A/C NO: 123457665434
 										<br />
 										BRANCH &amp; IFS CODE: <br />
 										KURLA <br />
-										BARBOKURLAX <br />
+										HSNOKURLAX <br />
 									</span>
 								</td>
 								<td
 									rowSpan={4}
 									style={{ width: "32%", textAlign: "right" }}
 								>
-									<span contentEditable>
-										FOR TARUN ENGINEERING WORKS
+									<span >
+										FOR HSN INDUSTRIES
 										<br />
 										<br />
 										<br />
@@ -600,20 +506,20 @@ class Showbill extends React.Component {
 										<br />
 										<br />
 										<br />
-										Partner{" "}
 									</span>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</aside>
+				</div>
 				<div>
 					<Link
 						to={{
 							pathname: "/show",
 							state: values,
 						}}
-						className="btn btn-outline-secondary"
+						className="btn btn-outline-secondary noPrint"
 						style={{
 							// backgroundColor: "#fcf93c",
 							marginTop: "15px",
@@ -625,7 +531,7 @@ class Showbill extends React.Component {
 					</Link>
 				</div>
 				<button
-					className="btn btn-outline-secondary"
+					className="btn btn-outline-secondary noPrint"
 					onClick={this.print}
 				>
 					Print
