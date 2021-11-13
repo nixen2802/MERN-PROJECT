@@ -9,7 +9,8 @@ const MainBillSchema=new Schema({
     place_of_supply: {type: String, required: true},
     transporter_info: {type: String, required: true},
     gst_no: {type: String, required: true},
-    billing_address: {type: String, required: true}
+    billing_address: {type: String, required: true},
+    status: {type: String, require: true}
 });
 const Mainbill= mongoose.model('mainbill',MainBillSchema);
 module.exports=Mainbill

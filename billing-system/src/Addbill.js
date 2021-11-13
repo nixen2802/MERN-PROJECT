@@ -176,7 +176,6 @@ import "./Addbill.css";
 import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
-import {saveAs} from 'file-saver';
 class Addbill extends Component {
 	constructor(props) {
 		super(props);
@@ -276,7 +275,6 @@ class Addbill extends Component {
 		this.setState({
 			billValues: [...this.state.billValues],
 		});
-		axios.post("http://localhost:5000/email",this.state)
 		axios
 			.post("http://localhost:5000/addbill", bill)
 			.then((result) => {

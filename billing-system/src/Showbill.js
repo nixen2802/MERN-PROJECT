@@ -158,6 +158,7 @@ class Showbill extends React.Component {
 	constructor(props) {
 		super(props);
 		this.print = this.print.bind(this);
+		this.mail=this.mail.bind(this);
 		this.state = {
 			billnumber: this.props.match.params.id,
 			value: this.props.location.state,
@@ -217,6 +218,19 @@ class Showbill extends React.Component {
 	}
 	print() {
 		window.print();
+	}
+	mail(){
+		axios.post("http://localhost:5000/send_email",this.state).then((result) => {
+			console.log(result.data);
+			if (result.data === "Success") {
+				alert("Email sent!!!");
+			} else {
+				alert("You have enetered something wrong!!!");
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+		});
 	}
 	render() {
 		const values = this.state.value;
@@ -535,6 +549,9 @@ class Showbill extends React.Component {
 					onClick={this.print}
 				>
 					Print
+				</button>
+				<button onClick={this.mail}>
+						Mail
 				</button>
 			</div>
 		);

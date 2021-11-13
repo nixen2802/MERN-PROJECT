@@ -350,7 +350,7 @@ function Home() {
 			</main>
 
 			<footer id="footer">
-				<div class="container">
+				<div class="container" id="contact">
 					<div class="copyright">
 						&copy; Copyright{" "}
 						<strong>

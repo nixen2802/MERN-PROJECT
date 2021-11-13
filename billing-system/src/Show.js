@@ -6,6 +6,7 @@ export default class Detials extends React.Component {
 	constructor(props) {
 		super(props);
 		this.deleteBill = this.deleteBill.bind(this);
+		this.updateBill = this.updateBill.bind(this);
 		this.state = {
 			value: this.props.location.state,
 			bills: [],
@@ -41,6 +42,19 @@ export default class Detials extends React.Component {
 				}
 			});
 	}
+	updateBill(billno, status){
+		const bill_update={update_id: billno, status: status};
+		axios.post("http://localhost:5000/update_bill",bill_update).then((result)=>{
+			if(result.data=="Success"){
+				alert("Status updated successfully!!!");
+				window.location = "http://localhost:3000/show";
+			}
+			else
+			{
+				alert("There is some error with server please try again later!!!")
+			}
+		})
+	}
 	render() {
 		const values = this.state.value;
 		const bill = this.state.bills.map((bill) => (
@@ -65,6 +79,7 @@ export default class Detials extends React.Component {
 								<p>Transporter Info : </p>
 								<p>GST NO : </p>
 								<p>Billing address : </p>
+								<p>Status : </p>
 							</div>
 							<div className="billDetailsValues">
 								<p>{bill.customer_name}</p>
@@ -75,6 +90,7 @@ export default class Detials extends React.Component {
 								<p>{bill.transporter_info}</p>
 								<p>{bill.gst_no}</p>
 								<p>{bill.billing_address}</p>
+								<p>{bill.status}</p>
 							</div>
 						</div>
 						<Link
@@ -93,6 +109,13 @@ export default class Detials extends React.Component {
 						</Link>
 					</div>
 					<div class="card-footer">
+						<button
+							class="btn-outline-warning btn"
+							style={{ fontSize: "14px" }}
+							onClick={() => this.updateBill(bill.billnumber, bill.status)}
+						>
+							Change Status
+						</button>
 						<Link
 							to={{
 								pathname: `/showbill/${bill.billnumber}`,

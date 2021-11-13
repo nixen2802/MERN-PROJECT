@@ -15,6 +15,16 @@ const Mainbill=require("./models/mainbill");
 const Bill=require("./models/bills");
 const Customer=require("./models/customer");
 
+//Email support
+const nodemailer = require("nodemailer");
+const sendGridTransport = require("nodemailer-sendgrid-transport");
+const {SENDGRID_API} = require("./config/keys");
+const transporter = nodemailer.createTransport(sendGridTransport({
+    auth:{
+    api_key:SENDGRID_API
+    }
+}))
+
 //Register route
 app.post("/register",(req,res)=>{
     const email=req.body.email;
@@ -149,7 +159,8 @@ app.post("/addbill",(req,res)=>{
                         place_of_supply: place_of_supply,
                         transporter_info: transporter_info,
                         gst_no: gst_no,
-                        billing_address: billing_address
+                        billing_address: billing_address,
+                        status: "Unpaid"
                      })
                     bill.save((err,user)=>{
                         if(err)
@@ -389,6 +400,57 @@ app.post("/delete_bill",(req,res)=>{
             })
         }
     });
+})
+
+
+//email check
+app.post("/send_email", (req, res) => {
+    const name = req.body.customer_name;
+    const total_amount=req.body.total_amount;
+    transporter.sendMail({
+    to:'kanaiyabarot1@gmail.com',
+    from: 'nayanmandaliya01@gmail.com',
+    subject: 'Bills notification from HSN industries',
+    html:`<h3>${name}</h3>
+    <p>${total_amount}</p>`
+    }).then(resp => {
+    res.end("Success");
+    })
+    .catch(err => {
+    console.log(err)
+    })
+})
+
+//Update status
+app.post("/update_bill",(req,res)=>{
+    const id=req.body.update_id;
+    const status=req.body.status;
+    if(status=="Paid")
+    {
+        Mainbill.findOneAndUpdate({billnumber: id}, {$set:{status:"Unpaid"}}, (err, result)=> {
+            if(err)
+            {
+                res.end("Failure");
+            }
+            else
+            {
+                res.end("Success");
+            }
+        });
+    }
+    else
+    {
+        Mainbill.findOneAndUpdate({billnumber: id}, {$set:{status:"Paid"}}, (err, result)=> {
+            if(err)
+            {
+                res.end("Failure");
+            }
+            else
+            {
+                res.end("Success");
+            }
+        });
+    }
 })
 
 //Server started on port 5000
