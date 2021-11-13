@@ -5,6 +5,7 @@ import axios from "axios";
 import number_to_word from "number-to-words";
 import print from 'print-js';
 import printJS from "print-js";
+import jsPDF from "jspdf";
 
 function numberToEnglish(n, custom_join_character) {
 	var string = n.toString(),
@@ -214,7 +215,6 @@ class Showbill extends React.Component {
 				});
 			});
 	}
-
 	print() {
 		window.print();
 	}

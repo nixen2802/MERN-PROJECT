@@ -377,7 +377,7 @@ app.post("/delete_bill",(req,res)=>{
         }
         else
         {
-            Bill.deleteMany({billnumber: id},(err,resu)=>{
+            Bill.deleteMany({billnumber:id},(err,resu)=>{
                 if(err)
                 {
                     res.end("Failure")
