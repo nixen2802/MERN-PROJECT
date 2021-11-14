@@ -76,37 +76,37 @@ export default class Detials extends React.Component {
 										<p>Customer Name : </p>
 										<p>{bill.customer_name}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>Date Of Supply : </p>
 										<p>{bill.date_of_supply}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>Total Amount : </p>
 										<p>{bill.total_amount - bill.gst}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>GST : </p>
 										<p>{bill.gst}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>Place Of Supply : </p>
 										<p>{bill.place_of_supply}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>Transporter Info : </p>
 										<p>{bill.transporter_info}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>GST NO : </p>
 										<p>{bill.gst_no}</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>Billing address : </p>
 										<p
@@ -118,7 +118,7 @@ export default class Detials extends React.Component {
 											{bill.billing_address}
 										</p>
 									</div>
-									<br />
+									<hr />
 									<div className="customAlign">
 										<p>Status : </p>
 										<p>{bill.status}</p>
