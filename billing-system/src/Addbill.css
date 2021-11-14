@@ -1,5 +1,5 @@
-.form-inline label {
-	margin: 5px 10px 5px 0;
+.form-inline {
+	margin-top: 50px;
 }
 
 .form-inline input {
@@ -30,12 +30,12 @@
 	background-color: royalblue;
 }
 
-.remove {
+/* .remove {
 	background-color: rgb(192, 53, 53);
 }
 .remove:hover {
 	background-color: rgb(187, 43, 43);
-}
+} */
 
 .input100 {
 	font-family: Poppins-Medium;

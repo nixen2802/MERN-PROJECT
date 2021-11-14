@@ -258,7 +258,7 @@ class Addbill extends Component {
 										{index ? (
 											<button
 												type="button"
-												className="button remove"
+												className="remove btn btn-danger"
 												onClick={() =>
 													this.removeFormFields(index)
 												}
