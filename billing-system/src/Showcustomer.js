@@ -47,10 +47,7 @@ export default class Customer_Detials extends React.Component {
 			//     </Link>
 			//     <button class="btn-primary btn" onClick={()=> this.deleteCustomer(customer._id)}>Delete customer</button>
 			// </div>
-			<div
-				className="col-xl-6 col-lg-6 col-md-12 col-xl-4"
-				key={customer._id}
-			>
+			<div className="col-xl-12 col-lg-12 col-md-12" key={customer._id}>
 				<div class="card customShadow" style={{ marginTop: "15px" }}>
 					<div class="card-header">Gst no : {customer.gst_no}</div>
 					<div class="card-body">
@@ -91,8 +88,8 @@ export default class Customer_Detials extends React.Component {
 		));
 
 		return (
-			<div>
-				{customer}
+			<div className="container">
+				<div className="row row-content">{customer}</div>
 				<div>
 					<Link
 						to={{

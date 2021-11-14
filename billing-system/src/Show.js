@@ -11,7 +11,7 @@ export default class Detials extends React.Component {
 			value: this.props.location.state,
 			bills: [],
 			customer: [],
-			bill_number: ""
+			bill_number: "",
 		};
 	}
 	componentDidMount() {
@@ -28,32 +28,32 @@ export default class Detials extends React.Component {
 
 		const { billid } = this.state;
 		const bill = { main_id: bill_no };
-		console.log("Temp printer : ",billid)
+		console.log("Temp printer : ", billid);
+		axios.post("http://localhost:5000/delete_bill", bill).then((result) => {
+			if (result.data == "Success") {
+				alert("Bill deleted successfully");
+				window.location = "http://localhost:3000/show";
+			} else {
+				alert(
+					"There is some error with server please try again later!!!"
+				);
+			}
+		});
+	}
+	updateBill(billno, status) {
+		const bill_update = { update_id: billno, status: status };
 		axios
-			.post("http://localhost:5000/delete_bill", bill)
+			.post("http://localhost:5000/update_bill", bill_update)
 			.then((result) => {
 				if (result.data == "Success") {
-					alert("Bill deleted successfully");
+					alert("Status updated successfully!!!");
 					window.location = "http://localhost:3000/show";
-				}
-				else
-				{
-					alert("There is some error with server please try again later!!!")
+				} else {
+					alert(
+						"There is some error with server please try again later!!!"
+					);
 				}
 			});
-	}
-	updateBill(billno, status){
-		const bill_update={update_id: billno, status: status};
-		axios.post("http://localhost:5000/update_bill",bill_update).then((result)=>{
-			if(result.data=="Success"){
-				alert("Status updated successfully!!!");
-				window.location = "http://localhost:3000/show";
-			}
-			else
-			{
-				alert("There is some error with server please try again later!!!")
-			}
-		})
 	}
 	render() {
 		const values = this.state.value;
@@ -69,28 +69,61 @@ export default class Detials extends React.Component {
 					</div>
 					<div class="card-body">
 						<h5 class="card-title">{bill.company_name}</h5>
-						<div class="billDetails">
-							<div className="billDetailTags">
-								<p>Customer Name : </p>
-								<p>Date Of Supply : </p>
-								<p>Total Amount : </p>
-								<p>GST : </p>
-								<p>Place Of Supply : </p>
-								<p>Transporter Info : </p>
-								<p>GST NO : </p>
-								<p>Billing address : </p>
-								<p>Status : </p>
-							</div>
-							<div className="billDetailsValues">
-								<p>{bill.customer_name}</p>
-								<p>{bill.date_of_supply}</p>
-								<p>{bill.total_amount-bill.gst}</p>
-								<p>{bill.gst}</p>
-								<p>{bill.place_of_supply}</p>
-								<p>{bill.transporter_info}</p>
-								<p>{bill.gst_no}</p>
-								<p>{bill.billing_address}</p>
-								<p>{bill.status}</p>
+						<div class="conatiner">
+							<div className="row row-content">
+								<div className="col-12">
+									<div className="customAlign">
+										<p>Customer Name : </p>
+										<p>{bill.customer_name}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>Date Of Supply : </p>
+										<p>{bill.date_of_supply}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>Total Amount : </p>
+										<p>{bill.total_amount - bill.gst}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>GST : </p>
+										<p>{bill.gst}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>Place Of Supply : </p>
+										<p>{bill.place_of_supply}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>Transporter Info : </p>
+										<p>{bill.transporter_info}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>GST NO : </p>
+										<p>{bill.gst_no}</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>Billing address : </p>
+										<p
+											style={{
+												maxWidth: "200px",
+												textAlign: "end",
+											}}
+										>
+											{bill.billing_address}
+										</p>
+									</div>
+									<br />
+									<div className="customAlign">
+										<p>Status : </p>
+										<p>{bill.status}</p>
+									</div>
+								</div>
 							</div>
 						</div>
 						<Link
@@ -112,7 +145,9 @@ export default class Detials extends React.Component {
 						<button
 							class="btn-outline-warning btn"
 							style={{ fontSize: "14px" }}
-							onClick={() => this.updateBill(bill.billnumber, bill.status)}
+							onClick={() =>
+								this.updateBill(bill.billnumber, bill.status)
+							}
 						>
 							Change Status
 						</button>

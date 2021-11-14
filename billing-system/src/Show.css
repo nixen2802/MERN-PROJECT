@@ -25,3 +25,9 @@
 	transition: all 0.3s ease-in-out;
 	border-radius: 10px;
 }
+
+.customAlign {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}

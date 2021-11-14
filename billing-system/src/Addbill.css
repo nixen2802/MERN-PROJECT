@@ -1,33 +1,63 @@
 .form-inline label {
-    margin: 5px 10px 5px 0;
-  }
+	margin: 5px 10px 5px 0;
+}
 
-  .form-inline input {
-    vertical-align: middle;
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-  }
+.form-inline input {
+	font-family: Poppins-Medium;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #666;
+	display: block;
+	width: 100%;
+	background: #e6e6e6;
+	height: 50px;
+	border-radius: 25px;
+	padding: 0 30px 0 68px;
+}
 
-  .button-section {
-    margin: 3%;
-  }
-  .button {
-    padding: 10px 20px;
-    background-color: dodgerblue;
-    border: 1px solid #ddd;
-    color: white;
-    cursor: pointer;
-  }
+.button-section {
+	margin: 3%;
+}
+.button {
+	padding: 10px 20px;
+	background-color: dodgerblue;
+	border: 1px solid #ddd;
+	color: white;
+	cursor: pointer;
+}
 
-  .button:hover {
-    background-color: royalblue;
-  }
+.button:hover {
+	background-color: royalblue;
+}
 
-  .remove {
-    background-color: rgb(192, 53, 53);
-  }
-  .remove:hover {
-    background-color: rgb(187, 43, 43);
-  }
+.remove {
+	background-color: rgb(192, 53, 53);
+}
+.remove:hover {
+	background-color: rgb(187, 43, 43);
+}
+
+.input100 {
+	font-family: Poppins-Medium;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #666;
+	display: block;
+	width: 100%;
+	background: #e6e6e6;
+	height: 50px;
+	border-radius: 25px;
+	padding: 0 30px 0 68px;
+	margin-bottom: 10px;
+}
+
+.address {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.button-section {
+	display: flex;
+}
