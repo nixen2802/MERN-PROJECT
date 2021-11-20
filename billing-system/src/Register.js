@@ -41,9 +41,27 @@ class Register extends Component {
 			.then((result) => {
 				console.log(result.data);
 				if (result.data === "Success") {
+					alert("Registration successfull!!!");
 					this.props.history.push("/login");
-				} else {
-					alert("You have enetered something wrong!!!");
+				} 
+				else if(result.data==="Empty")
+				{
+					alert("Email or password can't be empty!!!");
+				}
+				else if(result.data==="Invalid")
+				{
+					alert("Please enter a valid email!!!");
+				}
+				else if(result.data==="Exists")
+				{
+					alert("Email already exists!!!");
+				}
+				else if(result.data=="Short")
+				{
+					alert("Length of password must be greater than 6");
+				}
+				else {
+					alert("Enter passwords correctly!!!");
 				}
 			})
 			.catch((err) => {
@@ -131,22 +149,6 @@ class Register extends Component {
 									<button class="login100-form-btn">
 										Register
 									</button>
-								</div>
-								<div
-									class="text-center"
-									style={{ paddingTop: "12px" }}
-								>
-									<span class="txt1">Forgot</span>
-									<a
-										class="txt2"
-										href="#"
-										style={{
-											textDecoration: "none",
-											paddingLeft: "10px",
-										}}
-									>
-										Username / Password?
-									</a>
 								</div>
 								<div
 									class="text-center"

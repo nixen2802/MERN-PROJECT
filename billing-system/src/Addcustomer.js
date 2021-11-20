@@ -6,11 +6,13 @@ class Addcustomer extends Component {
 		super(props);
 		// this.handleInputChange=this.handleSubmit.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.cancel=this.cancel.bind(this);
 		this.state = {
 			value:this.props.location.state,
 			cust_name: "",
 			gst_no: "",
-			billing_address: ""
+			billing_address: "",
+			email: ""
 		};
 	}
 
@@ -23,15 +25,16 @@ class Addcustomer extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		const { cust_name, gst_no, billing_address } = this.state;
+		const { cust_name, gst_no, billing_address, email } = this.state;
 
 		const customer = {
-			cust_name, gst_no, billing_address 
+			cust_name, gst_no, billing_address, email 
 		};
 		this.setState({
 			cust_name: "",
 			gst_no: "",
-			billing_address: ""
+			billing_address: "",
+			email: ""
 		});
 		axios
 			.post("http://localhost:5000/addcustomer", customer)
@@ -50,7 +53,12 @@ class Addcustomer extends Component {
 				console.error(err);
 			});
 	};
-
+	cancel(){
+		this.props.history.push({
+			pathname: '/showcustomer',
+			  state: this.state.value // your data array of objects
+		  })
+	}
 	render() {
 		return (
 			<div>
@@ -121,12 +129,36 @@ class Addcustomer extends Component {
 										></i>
 									</span>
 								</div>
+								<div
+									class="wrap-input100 validate-input"
+								>
+									<input
+										class="input100"
+										type="text"
+										name="email"
+										placeholder="Email"
+										onChange={this.handleInputChange}
+										value={this.state.email}
+									/>
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+										<i
+											class="fa fa-lock"
+											aria-hidden="true"
+										></i>
+									</span>
+								</div>
 								<div class="container-login100-form-btn">
 									<button class="login100-form-btn">
 										Add
 									</button>
 								</div>
 							</form>
+							<div class="container-login100-form-btn">
+								<button style={{color: "black"}} class="btn btn-danger" onClick={this.cancel}>
+									Cancel
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>

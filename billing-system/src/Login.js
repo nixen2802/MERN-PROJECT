@@ -115,22 +115,6 @@ class Register extends Component {
 								</div>
 								<div
 									class="text-center"
-									style={{ paddingTop: "12px" }}
-								>
-									<span class="txt1">Forgot</span>
-									<a
-										class="txt2"
-										href="#"
-										style={{
-											textDecoration: "none",
-											paddingLeft: "10px",
-										}}
-									>
-										Username / Password?
-									</a>
-								</div>
-								<div
-									class="text-center"
 									style={{ paddingTop: "136px" }}
 								>
 								<Link to={'/register'}>

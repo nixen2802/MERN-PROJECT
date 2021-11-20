@@ -3,10 +3,10 @@ import { Link, useParams, withRouter } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 import number_to_word from "number-to-words";
-import print from 'print-js';
-import printJS from "print-js";
-import jsPDF from "jspdf";
-
+import jsPDF from 'jspdf';
+import pdfMake from 'pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import htmlToPdfmake from 'html-to-pdfmake';
 function numberToEnglish(n, custom_join_character) {
 	var string = n.toString(),
 		units,
@@ -174,6 +174,7 @@ class Showbill extends React.Component {
 			transporter_info: "",
 			gst_no: 0,
 			billing_address: "",
+			email: "",
 			sgst_amount: 0,
 			cgst_amount: 0,
 			igst_amount: 0,
@@ -210,6 +211,7 @@ class Showbill extends React.Component {
 						this.state.bill_details[0].transporter_info,
 					gst_no: this.state.bill_details[0].gst_no,
 					billing_address: this.state.bill_details[0].billing_address,
+					email: this.state.bill_details[0].email,
 					sgst_amount: this.state.bill_details[0].total_amount * 0.09,
 					cgst_amount: this.state.bill_details[0].total_amount * 0.09,
 					igst_amount: this.state.bill_details[0].total_amount * 0.18,
@@ -220,6 +222,7 @@ class Showbill extends React.Component {
 		window.print();
 	}
 	mail(){
+		
 		axios.post("http://localhost:5000/send_email",this.state).then((result) => {
 			console.log(result.data);
 			if (result.data === "Success") {
@@ -234,6 +237,29 @@ class Showbill extends React.Component {
 	}
 	render() {
 		const values = this.state.value;
+		let buttonBack="";
+		let buttonMail="";
+		if(values)
+		{
+			buttonBack=(<Link
+				to={{
+					pathname: "/show",
+					state: values,
+				}}
+				className="btn btn-outline-secondary noPrint"
+				style={{
+					// backgroundColor: "#fcf93c",
+					marginTop: "15px",
+					marginRight: "15px",
+					marginBottom: "15px",
+				}}
+			>
+				Back to Home page
+			</Link>);
+			buttonMail=(<button className="btn btn-outline-secondary noPrint" onClick={this.mail}>
+						Mail
+				</button>)
+		}
 		const billdetails = this.state.bill_details.map((bill) => (
 			<div key={bill._id}>
 				<div className="card-header">
@@ -528,21 +554,7 @@ class Showbill extends React.Component {
 				</aside>
 				</div>
 				<div>
-					<Link
-						to={{
-							pathname: "/show",
-							state: values,
-						}}
-						className="btn btn-outline-secondary noPrint"
-						style={{
-							// backgroundColor: "#fcf93c",
-							marginTop: "15px",
-							marginRight: "15px",
-							marginBottom: "15px",
-						}}
-					>
-						Back to Home page
-					</Link>
+				{buttonBack}
 				</div>
 				<button
 					className="btn btn-outline-secondary noPrint"
@@ -550,9 +562,7 @@ class Showbill extends React.Component {
 				>
 					Print
 				</button>
-				<button onClick={this.mail}>
-						Mail
-				</button>
+				{buttonMail}
 			</div>
 		);
 	}

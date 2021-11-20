@@ -10,6 +10,7 @@ const MainBillSchema=new Schema({
     transporter_info: {type: String, required: true},
     gst_no: {type: String, required: true},
     billing_address: {type: String, required: true},
+    email: {type: String, required: true},
     status: {type: String, require: true}
 });
 const Mainbill= mongoose.model('mainbill',MainBillSchema);

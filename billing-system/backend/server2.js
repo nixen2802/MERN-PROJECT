@@ -1,6 +1,7 @@
 const express=require('express');
 const app=express();
 const cors=require('cors');
+require('dotenv').config();
 const mongoose=require('mongoose');
 const Mclient=require('mongodb').MongoClient;
 mongoose.connect('mongodb://localhost:27017/Billing-System');
@@ -19,18 +20,41 @@ const Customer=require("./models/customer");
 const nodemailer = require("nodemailer");
 const sendGridTransport = require("nodemailer-sendgrid-transport");
 const {SENDGRID_API} = require("./config/keys");
-const transporter = nodemailer.createTransport(sendGridTransport({
-    auth:{
-    api_key:SENDGRID_API
-    }
-}))
+// const transporter = nodemailer.createTransport(sendGridTransport({
+//     auth:{
+//     api_key:SENDGRID_API
+//     }
+// }))
+
+const transporter = nodemailer.createTransport({
+    port: 465,               // true for 465, false for other ports
+    host: "smtp.gmail.com",
+       auth: {
+            user: process.env.user,
+            pass: process.env.pass,
+         },
+    secure: true,
+});
 
 //Register route
 app.post("/register",(req,res)=>{
     const email=req.body.email;
     const password=req.body.password;
     const conpassword=req.body.conpassword;
-    if(password==conpassword)
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(email=="" | password=="")
+    {
+        res.end("Empty");
+    }
+    else if(re.test(String(email).toLowerCase())==false)
+    {
+        res.end("Invalid");
+    }
+    else if(password.length<6)
+    {
+        res.end("Short");
+    }
+    else if(password==conpassword)
     {
         User.find((err,data)=>{
             if(err)
@@ -44,7 +68,7 @@ app.post("/register",(req,res)=>{
                 {
                     if(data[i].email==email)
                     {
-                        res.end("Failure");
+                        res.end("Exists");
                         flag=false;
                     }
                 }
@@ -128,6 +152,7 @@ app.post("/addbill",(req,res)=>{
     const transporter_info=req.body.transporter_info;
     var gst_no=req.body.gst_no;
     var billing_address=req.body.billing_address;
+    const email=req.body.email;
     const billValues=req.body.billValues;
     Mclient.connect(url, (err,db)=>{
         if(err)
@@ -160,6 +185,7 @@ app.post("/addbill",(req,res)=>{
                         transporter_info: transporter_info,
                         gst_no: gst_no,
                         billing_address: billing_address,
+                        email: email,
                         status: "Unpaid"
                      })
                     bill.save((err,user)=>{
@@ -263,8 +289,9 @@ app.post("/addcustomer",(req,res)=>{
     const cust_name=req.body.cust_name;
     const gst_no=req.body.gst_no;
     const billing_address=req.body.billing_address;
-    console.log(cust_name,gst_no,billing_address);
-    var customer=new Customer({cust_name: cust_name, gst_no: gst_no, billing_address: billing_address});
+    const email=req.body.email;
+    console.log(cust_name,gst_no,billing_address,email);
+    var customer=new Customer({cust_name: cust_name, gst_no: gst_no, billing_address: billing_address, email: email});
     customer.save((err,customer)=>{
         if(err)
         {
@@ -407,19 +434,33 @@ app.post("/delete_bill",(req,res)=>{
 app.post("/send_email", (req, res) => {
     const name = req.body.customer_name;
     const total_amount=req.body.total_amount;
-    transporter.sendMail({
-    to:'kanaiyabarot1@gmail.com',
-    from: 'nayanmandaliya01@gmail.com',
-    subject: 'Bills notification from HSN industries',
-    html:`<h3>${name}</h3>
-    <p>${total_amount}</p>`
-    }).then(resp => {
-    res.end("Success");
-    })
-    .catch(err => {
-    console.log(err)
-    })
+    const email=req.body.email;
+    console.log(req.body);
+    const mailData = {
+        from: process.env.user,
+        to: email,
+        subject: 'Bills notification from HSN industries',
+        html: `http://localhost:3000/showbill/${req.body.billnumber}`,
+    };
+    transporter.sendMail(mailData, function (err, info) {
+        if(err)
+          console.log(err)
+        else
+          res.end("Success");
+     });
+    // transporter.sendMail({
+    // to:'rekhamandaliya28@gmail.com',
+    // from: 'hsnindustriesmern@gmail.com',
+    // subject: 'Bills notification from HSN industries',
+    // html:`http://localhost:3000/showbill/${req.body.billnumber}`,
+    // }).then(resp => {
+    // res.end("Success");
+    // })
+    // .catch(err => {
+    // console.log(err)
+    // })
 })
+
 
 //Update status
 app.post("/update_bill",(req,res)=>{

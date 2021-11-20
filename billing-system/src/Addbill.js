@@ -15,6 +15,7 @@ class Addbill extends Component {
 			transporter_info: "",
 			gst_no: "",
 			billing_address: "",
+			email: "",
 			billValues: [
 				{ product_name: "", quantity: "", amount: "", hsn_code: "" },
 			],
@@ -32,6 +33,7 @@ class Addbill extends Component {
 				this.setState({
 					gst_no: this.state.customers[i].gst_no,
 					billing_address: this.state.customers[i].billing_address,
+					email: this.state.customers[i].email
 				});
 			}
 		}
@@ -93,6 +95,7 @@ class Addbill extends Component {
 			transporter_info,
 			gst_no,
 			billing_address,
+			email,
 			billValues,
 		} = this.state;
 
@@ -104,6 +107,7 @@ class Addbill extends Component {
 			transporter_info,
 			gst_no,
 			billing_address,
+			email,
 			billValues,
 		};
 		this.setState({
@@ -163,6 +167,7 @@ class Addbill extends Component {
 										Bill Number : {this.state.billnumber}
 									</h6>
 								</div>
+								<label>Customer Name:</label>
 								<select
 									className="input100"
 									style={{ border: "none" }}
@@ -173,6 +178,7 @@ class Addbill extends Component {
 									<option>Select</option>
 									{customer_options}
 								</select>
+								<label>Date of supply:</label>
 								<input
 									className="input100"
 									type="date"
@@ -222,6 +228,7 @@ class Addbill extends Component {
 								/>
 								{this.state.billValues.map((element, index) => (
 									<div className="form-inline" key={index}>
+									<label>Product:</label>
 										<select
 											className="input100"
 											style={{ border: "none" }}

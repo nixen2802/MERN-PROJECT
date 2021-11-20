@@ -6,6 +6,7 @@ class Addproduct extends Component {
 		super(props);
 		// this.handleInputChange=this.handleSubmit.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.cancel=this.cancel.bind(this);
 		this.state = {
 			value:this.props.location.state,
 			name: "",
@@ -52,6 +53,12 @@ class Addproduct extends Component {
 				console.error(err);
 			});
 	};
+	cancel(){
+		this.props.history.push({
+			pathname: '/showproducts',
+			  state: this.state.value // your data array of objects
+		  })
+	}
 
 	render() {
 		return (
@@ -98,7 +105,6 @@ class Addproduct extends Component {
 										value={this.state.hsn_code}
 									/>
 								</div>
-								<br />
                                 <div
 									class="wrap-input100 validate-input"
 								>
@@ -125,6 +131,11 @@ class Addproduct extends Component {
 									</button>
 								</div>
 							</form>
+							<div class="container-login100-form-btn">
+								<button style={{color: "black"}} class="btn btn-danger" onClick={this.cancel}>
+									Cancel
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
