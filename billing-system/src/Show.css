@@ -31,3 +31,20 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
+
+.edit {
+	color: #FEC307;
+}
+
+.edit:hover {
+	color: #dfb017;
+	/* transform: scale(1); */
+}
+
+.delete {
+	color: #E13545;
+}
+
+.delete:hover {
+	color: #aa2735;
+}

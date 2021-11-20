@@ -15,7 +15,7 @@ function Home() {
 		// 	</Link>
 		// </div>
 		<div>
-			<header id="header" class="fixed-top d-flex align-items-center">
+			<header style={{position: "absolute"}} id="header" class="fixed-top d-flex align-items-center">
 				<div
 					class="
 					container
@@ -360,7 +360,7 @@ function Home() {
 					</div>
 					<div class="credits">
 						Designed by
-						<a href="#">Rushabh, Nayan, Hussein</a>
+						<a href="#"> Rushabh, Nayan, Hussein</a>
 					</div>
 				</div>
 			</footer>

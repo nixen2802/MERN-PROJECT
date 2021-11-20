@@ -34,9 +34,7 @@ export default class Detials extends React.Component {
 				alert("Bill deleted successfully");
 				window.location = "http://localhost:3000/show";
 			} else {
-				alert(
-					"There is some error with server please try again later!!!"
-				);
+				alert("There is some error with server please try again later!!!");
 			}
 		});
 	}
@@ -49,24 +47,20 @@ export default class Detials extends React.Component {
 					alert("Status updated successfully!!!");
 					window.location = "http://localhost:3000/show";
 				} else {
-					alert(
-						"There is some error with server please try again later!!!"
-					);
+					alert("There is some error with server please try again later!!!");
 				}
 			});
 	}
 	render() {
 		const values = this.state.value;
 		const bill = this.state.bills.map((bill) => (
-			<div className="col-xl-6 col-lg-6 col-md-12 col-xl-3">
+			<div className="col-xl-4 col-lg-4 col-md-12 col-xl-3">
 				<div
 					class="card customShadow"
 					key={bill._id}
 					style={{ marginTop: "15px" }}
 				>
-					<div class="card-header">
-						Bill Number : {bill.billnumber}
-					</div>
+					<div class="card-header">Bill Number : {bill.billnumber}</div>
 					<div class="card-body">
 						<h5 class="card-title">{bill.company_name}</h5>
 						<div class="conatiner">
@@ -79,10 +73,10 @@ export default class Detials extends React.Component {
 									<hr />
 									<div className="customAlign">
 										<p>Date Of Supply : </p>
-										<p>{bill.date_of_supply}</p>
+										<p>{bill.date_of_supply.toString().slice(0, 10)}</p>
 									</div>
 									<hr />
-									<div className="customAlign">
+									{/* <div className="customAlign">
 										<p>Total Amount : </p>
 										<p>{bill.total_amount - bill.gst}</p>
 									</div>
@@ -117,8 +111,7 @@ export default class Detials extends React.Component {
 										>
 											{bill.billing_address}
 										</p>
-									</div>
-									<hr />
+									</div> */}
 									<div className="customAlign">
 										<p>Status : </p>
 										<p>{bill.status}</p>
@@ -145,9 +138,7 @@ export default class Detials extends React.Component {
 						<button
 							class="btn-outline-warning btn"
 							style={{ fontSize: "14px" }}
-							onClick={() =>
-								this.updateBill(bill.billnumber, bill.status)
-							}
+							onClick={() => this.updateBill(bill.billnumber, bill.status)}
 						>
 							Change Status
 						</button>
@@ -171,10 +162,10 @@ export default class Detials extends React.Component {
 				</div>
 			</div>
 		));
-		function renderElement() {
+		function renderViewProductsButton() {
 			if (values.email === "nayanmandaliya01@gmail.com") {
 				return (
-					<div>
+					<li>
 						<Link
 							to={{
 								pathname: "/showproducts",
@@ -182,59 +173,138 @@ export default class Detials extends React.Component {
 							}}
 							style={{ marginRight: "15px" }}
 						>
-							<button className="btn btn-outline-secondary">
-								View Products
-							</button>
+							View Products
 						</Link>
+					</li>
+				);
+			}
+			return null;
+		};
+		function renderViewCustomersButton() {
+			if (values.email === "nayanmandaliya01@gmail.com") {
+				return (
+					<li>
 						<Link
 							to={{
 								pathname: "/showcustomer",
 								state: values, // your data array of objects
 							}}
 						>
-							<button className="btn btn-outline-secondary">
-								View Customers
-							</button>
+							View Customers
 						</Link>
-					</div>
+					</li>
 				);
 			}
 			return null;
 		}
 
 		return (
-			<div className="container mx-auto" style={{ margin: "0px" }}>
-				<div className="row row-content">{bill}</div>
-				<div>
-					<Link
-						to={{
-							pathname: "/addbill",
-							state: values,
-						}}
-						className="btn btn-outline"
-						style={{
-							backgroundColor: "#fcf93c",
-							marginTop: "15px",
-							marginRight: "15px",
-							marginBottom: "15px",
-						}}
+			<div>
+				<div style={{ background: "rgba(0, 0, 0, 0.1)", position: "absolute" }} id="header" class="fixed-top d-flex align-items-center">
+					<div
+						class="
+						container
+						d-flex
+						align-items-center
+						justify-content-between
+					"
 					>
-						Add bill
-					</Link>
-					<Link
-						to={"/"}
-						className="btn"
-						style={{
-							backgroundColor: "#fcf93c",
-							marginTop: "15px",
-							marginRight: "15px",
-							marginBottom: "15px",
-						}}
-					>
-						Logout
-					</Link>
+						<h1 class="logo">
+							<a style={{ color: "black" }} href="#">
+								HSN
+							</a>
+						</h1>
+
+						<nav id="navbar" class="navbar">
+							<ul>
+								<li>
+									<Link
+										to={{
+											pathname: "/addbill",
+											state: values,
+										}}
+										style={{ color: "black" }}
+										class="nav-link scrollto"
+										href="#hero"
+									>
+										Add bill
+									</Link>
+								</li>
+								<li>
+									<Link
+										to={"/"}
+										style={{ color: "black" }}
+										class="nav-link scrollto"
+										href="#about"
+									>
+										Logout
+									</Link>
+								</li>
+								{renderViewProductsButton}
+								{renderViewCustomersButton}
+							</ul>
+							<i class="bi bi-list mobile-nav-toggle"></i>
+						</nav>
+					</div>
 				</div>
-				<div>{renderElement()}</div>
+				<div
+					className="container mx-auto"
+					style={{ margin: "0px", marginTop: "100px" }}
+				>
+					<div className="row row-content">{bill}</div>
+					{/* <div>
+						<Link
+							to={{
+								pathname: "/addbill",
+								state: values,
+							}}
+							className="btn btn-outline"
+							style={{
+								backgroundColor: "#fcf93c",
+								marginTop: "15px",
+								marginRight: "15px",
+								marginBottom: "15px",
+							}}
+						>
+							Add bill
+						</Link>
+						<Link
+							to={"/"}
+							className="btn"
+							style={{
+								backgroundColor: "#fcf93c",
+								marginTop: "15px",
+								marginRight: "15px",
+								marginBottom: "15px",
+							}}
+						>
+							Logout
+						</Link>
+					</div> */}
+					{/* <div>{renderElement()}</div> */}
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<footer style={{background: "rgba(0, 0, 0, 0.1)"}} id="footer">
+					<div class="container" id="contact">
+						<div style={{color: "black"}} class="copyright">
+							&copy; Copyright{" "}
+							<strong>
+								<span>HSN</span>
+							</strong>
+							. All Rights Reserved
+						</div>
+						<div style={{color: "black"}} class="credits">
+							Designed by
+							<a href="#"> Rushabh, Nayan, Hussein</a>
+						</div>
+					</div>
+				</footer>
 			</div>
 		);
 	}
