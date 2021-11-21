@@ -3,16 +3,17 @@
 In this era of technology it is very much tedious to manage bills of a small organisation physically. So there must be a technological connect of this problem. So we have proposed a solution for managing bills of a small organisation by developing a website. Through our website organisation can reduce the complexity of managing bills. 
 
 # Dependencies:
-1. NodeJS/t11. MongoDB/t21. html-pdf/t
-2. ExpressJS/t12. Mongoose/t22. is-empty
-3. ReactJS/t13. number-to-words/t23. nodemailer
-4. Fontawesome/t14. pdfmake/t24. nodemailer-sendgrid-support
-5. Axios/t15. print-js/t25. nodemon
-6. Bootstrap/t16. react-datepicker/t26. popup
-7. File-saver/t17. react-router-dom/t27. validator
-8. html-to-pdfmake/t18. body-parser
-9. html2canvas/t19. cors
-10. jspdf/t20. dotenv
+<pre>
+1. NodeJS                     10. MongoDB                          19. html-pdf
+2. ExpressJS                  11. Mongoose                         20. is-empty
+3. ReactJS                    12. number-to-words                  21. nodemailer
+4. Fontawesome                13. pdfmake                          22. nodemailer-sendgrid-support
+5. Axios                      14. print-js                         23. nodemon
+6. Bootstrap                  15. react-datepicker                 24. popup
+7. File-saver                 16. react-router-dom                 25. validator
+8. html-to-pdfmake            17. body-parser                      26. jspdf
+9. html2canvas                18. cors                             27. dotenv
+</pre>
 
 # How to install all dependencies? 
 npm install {name of dependency}
@@ -31,9 +32,11 @@ npm install {name of dependency}
 
 
 # Features
+<pre>
 1. Login / Register using email id.
 2. Add / update / delete customers.
 3. Add / update /delete products.
 4. Add / update / delete bills.
 5. Print bill.
 6. Mail bill to the particular customer.
+</pre>
