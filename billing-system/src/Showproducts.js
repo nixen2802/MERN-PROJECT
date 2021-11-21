@@ -36,6 +36,7 @@ export default class Detials extends React.Component {
 		});
 	}
 	render() {
+		const values=this.state.value;
 		const product = this.state.products.map((product) => (
 			<div
 				className="col-xl-4 col-lg-6 col-md-6 col-xl-3"
@@ -81,9 +82,94 @@ export default class Detials extends React.Component {
 			</div>
 		));
 
+		function renderViewProductsButton() {
+			if (values.email === "nayanmandaliya01@gmail.com") {
+				return (
+					<li>
+						<Link
+							to={{
+								pathname: "/showproducts",
+								state: values, // your data array of objects
+							}}
+							style={{ color: "black" }}
+						>
+							View Products
+						</Link>
+					</li>
+				);
+			}
+			return null;
+		};
+		function renderViewCustomersButton() {
+			if (values.email === "nayanmandaliya01@gmail.com") {
+				return (
+					<li>
+						<Link
+							to={{
+								pathname: "/showcustomer",
+								state: values, // your data array of objects
+							}}
+							style={{ color: "black" }}
+						>
+							View Customers
+						</Link>
+					</li>
+				);
+			}
+			return null;
+		}
+
 		return (
+			<div>
+			<div style={{ background: "rgba(0, 0, 0, 0.1)", position: "absolute" }} id="header" class="fixed-top d-flex align-items-center">
+					<div
+						class="
+						container
+						d-flex
+						align-items-center
+						justify-content-between
+					"
+					>
+						<h1 class="logo">
+							<a style={{ color: "black" }} href="#">
+								HRN
+							</a>
+						</h1>
+
+						<nav id="navbar" class="navbar">
+							<ul>
+								<li>
+									<Link
+										to={{
+											pathname: "/addbill",
+											state: this.state.value,
+										}}
+										style={{ color: "black" }}
+										class="nav-link scrollto"
+										href="#hero"
+									>
+										Add bill
+									</Link>
+								</li>
+								{renderViewProductsButton()}
+								{renderViewCustomersButton()}
+								<li>
+									<Link
+										to={"/"}
+										style={{ color: "black" }}
+										class="nav-link scrollto"
+										href="#about"
+									>
+										Logout
+									</Link>
+								</li>
+							</ul>
+							<i class="bi bi-list mobile-nav-toggle"></i>
+						</nav>
+					</div>
+				</div>
 			<div className="container">
-				<div className="row row-content">{product}</div>
+				<div className="row row-content" style={{margin: "0px", marginTop: "100px" }}>{product}</div>
 				<div>
 					<Link
 						to={{
@@ -108,6 +194,28 @@ export default class Detials extends React.Component {
 					</Link>
 				</div>
 			</div>
+			<div>
+			<br />
+				<br />
+				<br />
+				<footer style={{background: "rgba(0, 0, 0, 0.1)"}} id="footer">
+					<div class="container" id="contact">
+						<div style={{color: "black"}} class="copyright">
+							&copy; Copyright{" "}
+							<strong>
+								<span>HSN</span>
+							</strong>
+							. All Rights Reserved
+						</div>
+						<div style={{color: "black"}} class="credits">
+							Designed by
+							<a href="#"> Rushabh, Nayan, Hussein</a>
+						</div>
+					</div>
+				</footer>
+				<br />
+			</div>
+		</div>
 		);
 	}
 }

@@ -7,6 +7,7 @@ class Addbill extends Component {
 		super(props);
 		// this.handleInputChange=this.handleSubmit.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.cancel=this.cancel.bind(this);
 		this.state = {
 			billnumber: Math.floor(Math.random() * 1001),
 			customer_name: "",
@@ -61,10 +62,11 @@ class Addbill extends Component {
 					// if(this.state.quantity!="")
 					// {
 					this.setState({
-						billValues,
+						billValues
 						// this.state.billValues: "",
 						// price: this.state.products[i].price*Number(this.state.quantity)
 					});
+					console.log("Temp : ",this.state.billValues)
 					// }
 				}
 			}
@@ -144,7 +146,20 @@ class Addbill extends Component {
 			console.log(this.state.customers);
 		});
 	}
+	cancel(){
+		this.props.history.push({
+			pathname: '/show',
+			  state: this.state.values // your data array of objects
+		  })
+	}
 	render() {
+		let total=0;
+		let gst_cal=0;
+		for(let i=0;i<this.state.billValues.length;i++)
+		{
+			total=total+Number(this.state.billValues[i].amount);
+		}
+		gst_cal=total*0.18;
 		let options = this.state.products.map((v) => (
 			<option value={v.id}>{v.name}</option>
 		));
@@ -275,6 +290,10 @@ class Addbill extends Component {
 										) : null}
 									</div>
 								))}
+								<div>
+									Total Amount : {total}
+									GST (18%) : {gst_cal}
+								</div>
 								<div className="button-section">
 									<button
 										className="button add-bu login100-form-btn"
@@ -292,6 +311,11 @@ class Addbill extends Component {
 									</button>
 								</div>
 							</form>
+							<div class="container-login100-form-btn">
+								<button style={{color: "black"}} class="btn btn-danger" onClick={this.cancel}>
+									Cancel
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>

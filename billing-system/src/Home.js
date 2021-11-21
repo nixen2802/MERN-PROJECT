@@ -25,7 +25,7 @@ function Home() {
 				"
 				>
 					<h1 class="logo">
-						<a href="#">HSN</a>
+						<a href="#">HRN</a>
 					</h1>
 
 					<nav id="navbar" class="navbar">
@@ -71,7 +71,7 @@ function Home() {
 					<div class="carousel-item active">
 						<div class="carousel-container">
 							<h2 class="animate__animated animate__fadeInDown">
-								Welcome to <span>HSN</span>
+								Welcome to <span>HRN</span>
 							</h2>
 							<p class="animate__animated animate__fadeInUp">
 								Ut velit est quam dolor ad a aliquid qui
@@ -354,7 +354,7 @@ function Home() {
 					<div class="copyright">
 						&copy; Copyright{" "}
 						<strong>
-							<span>HSN</span>
+							<span>HRN</span>
 						</strong>
 						. All Rights Reserved
 					</div>

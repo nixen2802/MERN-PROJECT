@@ -171,7 +171,7 @@ export default class Detials extends React.Component {
 								pathname: "/showproducts",
 								state: values, // your data array of objects
 							}}
-							style={{ marginRight: "15px" }}
+							style={{ color: "black" }}
 						>
 							View Products
 						</Link>
@@ -189,6 +189,7 @@ export default class Detials extends React.Component {
 								pathname: "/showcustomer",
 								state: values, // your data array of objects
 							}}
+							style={{ color: "black" }}
 						>
 							View Customers
 						</Link>
@@ -211,7 +212,7 @@ export default class Detials extends React.Component {
 					>
 						<h1 class="logo">
 							<a style={{ color: "black" }} href="#">
-								HSN
+								HRN
 							</a>
 						</h1>
 
@@ -230,6 +231,8 @@ export default class Detials extends React.Component {
 										Add bill
 									</Link>
 								</li>
+								{renderViewProductsButton()}
+								{renderViewCustomersButton()}
 								<li>
 									<Link
 										to={"/"}
@@ -240,8 +243,6 @@ export default class Detials extends React.Component {
 										Logout
 									</Link>
 								</li>
-								{renderViewProductsButton}
-								{renderViewCustomersButton}
 							</ul>
 							<i class="bi bi-list mobile-nav-toggle"></i>
 						</nav>
