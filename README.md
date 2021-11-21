@@ -3,16 +3,16 @@
 In this era of technology it is very much tedious to manage bills of a small organisation physically. So there must be a technological connect of this problem. So we have proposed a solution for managing bills of a small organisation by developing a website. Through our website organisation can reduce the complexity of managing bills. 
 
 # Dependencies:
-1. NodeJS                              11. MongoDB                    21. html-pdf
-2. ExpressJS                           12. Mongoose                   22. is-empty
-3. ReactJS                             13. number-to-words            23. nodemailer
-4. Fontawesome                         14. pdfmake                    24. nodemailer-sendgrid-support
-5. Axios                               15. print-js                   25. nodemon
-6. Bootstrap                           16. react-datepicker           26. popup
-7. File-saver                          17. react-router-dom           27. validator
-8. html-to-pdfmake                     18. body-parser
-9. html2canvas                         19. cors
-10. jspdf                              20. dotenv
+1. NodeJS/t11. MongoDB/t21. html-pdf/t
+2. ExpressJS/t12. Mongoose/t22. is-empty
+3. ReactJS/t13. number-to-words/t23. nodemailer
+4. Fontawesome/t14. pdfmake/t24. nodemailer-sendgrid-support
+5. Axios/t15. print-js/t25. nodemon
+6. Bootstrap/t16. react-datepicker/t26. popup
+7. File-saver/t17. react-router-dom/t27. validator
+8. html-to-pdfmake/t18. body-parser
+9. html2canvas/t19. cors
+10. jspdf/t20. dotenv
 
 # How to install all dependencies? 
 npm install {name of dependency}
