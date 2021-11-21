@@ -56,7 +56,7 @@ class Addcustomer extends Component {
 	cancel(){
 		this.props.history.push({
 			pathname: '/showcustomer',
-			  state: this.state.value // your data array of objects
+			state: this.state.value // your data array of objects
 		  })
 	}
 	render() {

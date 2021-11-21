@@ -296,7 +296,7 @@ export default class Detials extends React.Component {
 						<div style={{color: "black"}} class="copyright">
 							&copy; Copyright{" "}
 							<strong>
-								<span>HSN</span>
+								<span>HRN</span>
 							</strong>
 							. All Rights Reserved
 						</div>

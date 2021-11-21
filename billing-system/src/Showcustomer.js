@@ -18,6 +18,7 @@ export default class Customer_Detials extends React.Component {
 				customers: result.data,
 			});
 		});
+		console.log(this.state.value)
 	}
 	deleteCustomer(cust_id) {
 		this.setState({
@@ -131,6 +132,7 @@ export default class Customer_Detials extends React.Component {
 					<Link
 						to={{
 							pathname: "/addcustomer",
+							state: values
 							// state: this.state.value,
 						}}
 						style={{ color: "black" }}
@@ -217,7 +219,7 @@ export default class Customer_Detials extends React.Component {
 							<div style={{ color: "black" }} class="copyright">
 								&copy; Copyright{" "}
 								<strong>
-									<span>HSN</span>
+									<span>HRN</span>
 								</strong>
 								. All Rights Reserved
 							</div>

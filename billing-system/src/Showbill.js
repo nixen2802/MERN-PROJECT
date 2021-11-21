@@ -538,7 +538,7 @@ class Showbill extends React.Component {
 									style={{ width: "32%", textAlign: "right" }}
 								>
 									<span >
-										FOR HSN INDUSTRIES
+										FOR HRN INDUSTRIES
 										<br />
 										<br />
 										<br />

@@ -9,7 +9,8 @@ class Addbill extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.cancel=this.cancel.bind(this);
 		this.state = {
-			billnumber: Math.floor(Math.random() * 1001),
+			// billnumber: Math.floor(Math.random() * 1001),
+			billnumber: 0,
 			customer_name: "",
 			date_of_supply: "",
 			place_of_supply: "",
@@ -145,6 +146,21 @@ class Addbill extends Component {
 			});
 			console.log(this.state.customers);
 		});
+		axios.get("http://localhost:5000/fetch").then((result)=>{
+			if(result.data.length==0)
+			{
+				this.setState({
+					billnumber: 1,
+				})
+			}
+			else
+			{
+				this.setState({
+					billnumber: Number(result.data[result.data.length-1].billnumber)+1,
+				})
+			}
+			console.log(result.data[result.data.length-1])
+		})
 	}
 	cancel(){
 		this.props.history.push({
