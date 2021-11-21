@@ -171,11 +171,13 @@ class Addbill extends Component {
 	render() {
 		let total=0;
 		let gst_cal=0;
+		let final_total=0;
 		for(let i=0;i<this.state.billValues.length;i++)
 		{
 			total=total+Number(this.state.billValues[i].amount);
 		}
 		gst_cal=total*0.18;
+		final_total=total+gst_cal;
 		let options = this.state.products.map((v) => (
 			<option value={v.id}>{v.name}</option>
 		));
@@ -307,8 +309,11 @@ class Addbill extends Component {
 									</div>
 								))}
 								<div>
-									Total Amount : {total}
-									GST (18%) : {gst_cal}
+									<h4>Total Amount : {total}</h4>
+									<br />
+									<h4>GST (18%) : {gst_cal}</h4>
+									<br />
+									<h4>Final Total : {final_total}</h4>
 								</div>
 								<div className="button-section">
 									<button
