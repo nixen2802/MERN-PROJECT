@@ -36,7 +36,7 @@ export default class Detials extends React.Component {
 		});
 	}
 	render() {
-		const values=this.state.value;
+		const values = this.state.value;
 		const product = this.state.products.map((product) => (
 			<div
 				className="col-xl-4 col-lg-6 col-md-6 col-xl-3"
@@ -91,7 +91,7 @@ export default class Detials extends React.Component {
 								pathname: "/showproducts",
 								state: values, // your data array of objects
 							}}
-							style={{ color: "black" }}
+							style={{ color: "black", borderBottom: "2px solid #f6b024" }}
 						>
 							View Products
 						</Link>
@@ -117,11 +117,28 @@ export default class Detials extends React.Component {
 				);
 			}
 			return null;
+		};
+
+		function renderAddProductsButton() {
+			return (
+				<li>
+					<Link
+						to={{
+							pathname: "/addproducts",
+							// state: this.state.value,
+						}}
+						style={{ color: "black" }}
+					// className="btn btn-outline-secondary"
+					>
+						Add Products
+					</Link>
+				</li>
+			)
 		}
 
 		return (
 			<div>
-			<div style={{ background: "rgba(0, 0, 0, 0.1)", position: "absolute" }} id="header" class="fixed-top d-flex align-items-center">
+				<div style={{ background: "rgba(0, 0, 0, 0.1)", position: "absolute" }} id="header" class="fixed-top d-flex align-items-center">
 					<div
 						class="
 						container
@@ -151,6 +168,7 @@ export default class Detials extends React.Component {
 										Add bill
 									</Link>
 								</li>
+								{renderAddProductsButton()}
 								{renderViewProductsButton()}
 								{renderViewCustomersButton()}
 								<li>
@@ -168,54 +186,54 @@ export default class Detials extends React.Component {
 						</nav>
 					</div>
 				</div>
-			<div className="container">
-				<div className="row row-content" style={{margin: "0px", marginTop: "100px" }}>{product}</div>
+				<div className="container">
+					<div className="row row-content" style={{ margin: "0px", marginTop: "100px" }}>{product}</div>
+					<div>
+						{/* <Link
+							to={{
+								pathname: "/addproducts",
+								state: this.state.value,
+							}}
+							className="btn btn-outline-secondary"
+							style={{
+								marginTop: "20px",
+								marginRight: "10px",
+								marginLeft: "20px",
+							}}
+						>
+							Add Product
+						</Link> */}
+						<Link
+							className="btn btn-outline-secondary"
+							to={{ pathname: "/show", state: this.state.value }}
+							style={{ marginTop: "20px", marginLeft: "15px" }}
+						>
+							Back to bills
+						</Link>
+					</div>
+				</div>
 				<div>
-					<Link
-						to={{
-							pathname: "/addproducts",
-							state: this.state.value,
-						}}
-						className="btn btn-outline-secondary"
-						style={{
-							marginTop: "20px",
-							marginRight: "10px",
-							marginLeft: "20px",
-						}}
-					>
-						Add Product
-					</Link>
-					<Link
-						className="btn btn-outline-secondary"
-						to={{ pathname: "/show", state: this.state.value }}
-						style={{ marginTop: "20px" }}
-					>
-						Back to bills
-					</Link>
+					<br />
+					<br />
+					<br />
+					<footer style={{ background: "rgba(0, 0, 0, 0.1)" }} id="footer">
+						<div class="container" id="contact">
+							<div style={{ color: "black" }} class="copyright">
+								&copy; Copyright{" "}
+								<strong>
+									<span>HSN</span>
+								</strong>
+								. All Rights Reserved
+							</div>
+							<div style={{ color: "black" }} class="credits">
+								Designed by
+								<a href="#"> Rushabh, Nayan, Hussein</a>
+							</div>
+						</div>
+					</footer>
+					<br />
 				</div>
 			</div>
-			<div>
-			<br />
-				<br />
-				<br />
-				<footer style={{background: "rgba(0, 0, 0, 0.1)"}} id="footer">
-					<div class="container" id="contact">
-						<div style={{color: "black"}} class="copyright">
-							&copy; Copyright{" "}
-							<strong>
-								<span>HSN</span>
-							</strong>
-							. All Rights Reserved
-						</div>
-						<div style={{color: "black"}} class="credits">
-							Designed by
-							<a href="#"> Rushabh, Nayan, Hussein</a>
-						</div>
-					</div>
-				</footer>
-				<br />
-			</div>
-		</div>
 		);
 	}
 }

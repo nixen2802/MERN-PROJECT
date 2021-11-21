@@ -115,7 +115,7 @@ export default class Customer_Detials extends React.Component {
 								pathname: "/showcustomer",
 								state: values, // your data array of objects
 							}}
-							style={{ color: "black", borderBottom: "10px solid #f6b024", }}
+							style={{ color: "black", borderBottom: "2px solid #f6b024", }}
 						>
 							View Customers
 						</Link>
@@ -123,12 +123,29 @@ export default class Customer_Detials extends React.Component {
 				);
 			}
 			return null;
+		};
+
+		function renderAddCustomerButton() {
+			return (
+				<li>
+					<Link
+						to={{
+							pathname: "/addcustomer",
+							// state: this.state.value,
+						}}
+						style={{ color: "black" }}
+					// className="btn btn-outline-secondary"
+					>
+						Add Customer
+					</Link>
+				</li>
+			)
 		}
 
 
 		return (
 			<div>
-			<div style={{ background: "rgba(0, 0, 0, 0.1)", position: "absolute" }} id="header" class="fixed-top d-flex align-items-center">
+				<div style={{ background: "rgba(0, 0, 0, 0.1)", position: "absolute" }} id="header" class="fixed-top d-flex align-items-center">
 					<div
 						class="
 						container
@@ -158,6 +175,7 @@ export default class Customer_Detials extends React.Component {
 										Add bill
 									</Link>
 								</li>
+								{renderAddCustomerButton()}
 								{renderViewProductsButton()}
 								{renderViewCustomersButton()}
 								<li>
@@ -175,55 +193,42 @@ export default class Customer_Detials extends React.Component {
 						</nav>
 					</div>
 				</div>
-			<div className="container">
-				<div className="row row-content" style={{margin: "0px", marginTop: "100px" }}>{customer}</div>
+				<div className="container">
+					<div className="row row-content" style={{ margin: "0px", marginTop: "100px" }}>{customer}</div>
+					<div>
+						<Link
+							className="btn btn-outline-secondary"
+							style={{
+								marginTop: "20px",
+								marginLeft: "15px"
+							}}
+							to={{ pathname: "/show", state: this.state.value }}
+						>
+							Back to bills
+						</Link>
+					</div>
+				</div>
 				<div>
-					<Link
-						to={{
-							pathname: "/addcustomer",
-							state: this.state.value,
-						}}
-						style={{
-							marginTop: "20px",
-							marginLeft: "20px",
-							marginRight: "10px",
-						}}
-						className="btn btn-outline-secondary"
-					>
-						Add Customer
-					</Link>
-					<Link
-						className="btn btn-outline-secondary"
-						style={{
-							marginTop: "20px",
-						}}
-						to={{ pathname: "/show", state: this.state.value }}
-					>
-						Back to bills
-					</Link>
+					<br />
+					<br />
+					<br />
+					<footer style={{ background: "rgba(0, 0, 0, 0.1)", width: "100%" }} id="footer">
+						<div class="container" id="contact">
+							<div style={{ color: "black" }} class="copyright">
+								&copy; Copyright{" "}
+								<strong>
+									<span>HSN</span>
+								</strong>
+								. All Rights Reserved
+							</div>
+							<div style={{ color: "black" }} class="credits">
+								Designed by
+								<a href="#"> Rushabh, Nayan, Hussein</a>
+							</div>
+						</div>
+					</footer>
+					<br />
 				</div>
-			</div>
-			<div>
-			<br />
-			<br />
-			<br />
-			<footer style={{background: "rgba(0, 0, 0, 0.1)", width: "100%"}} id="footer">
-				<div class="container" id="contact">
-					<div style={{color: "black"}} class="copyright">
-						&copy; Copyright{" "}
-						<strong>
-							<span>HSN</span>
-						</strong>
-						. All Rights Reserved
-					</div>
-					<div style={{color: "black"}} class="credits">
-						Designed by
-						<a href="#"> Rushabh, Nayan, Hussein</a>
-					</div>
-				</div>
-			</footer>
-			<br />
-			</div>
 			</div>
 		);
 	}
