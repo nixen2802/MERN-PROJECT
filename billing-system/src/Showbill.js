@@ -186,12 +186,10 @@ class Showbill extends React.Component {
 				params: { id: this.state.billnumber },
 			})
 			.then((result) => {
-				// console.log(result.data);
 				this.setState({
 					bills: result.data,
 				});
 				console.log(this.state.bills);
-				// console.log(this.state.bills[0]);
 			});
 		axios
 			.get("http://localhost:5000/fetch_bill_details", {
@@ -248,7 +246,6 @@ class Showbill extends React.Component {
 				}}
 				className="btn btn-outline-secondary noPrint"
 				style={{
-					// backgroundColor: "#fcf93c",
 					marginTop: "15px",
 					marginRight: "15px",
 					marginBottom: "15px",
@@ -400,11 +397,7 @@ class Showbill extends React.Component {
 								<th style={{ width: "14%" }}>
 									<span >Total</span>
 								</th>
-								{/* <th><span >Item</span></th>
-							<th><span >Description</span></th>
-							<th><span >Rate</span></th>
-							<th><span >Quantity</span></th>
-							<th><span >Price</span></th> */}
+								
 							</tr>
 						</thead>
 						<tbody>

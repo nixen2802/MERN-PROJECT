@@ -190,20 +190,7 @@ export default class Detials extends React.Component {
 				<div className="container">
 					<div className="row row-content" style={{ margin: "0px", marginTop: "100px" }}>{product}</div>
 					<div>
-						{/* <Link
-							to={{
-								pathname: "/addproducts",
-								state: this.state.value,
-							}}
-							className="btn btn-outline-secondary"
-							style={{
-								marginTop: "20px",
-								marginRight: "10px",
-								marginLeft: "20px",
-							}}
-						>
-							Add Product
-						</Link> */}
+						
 						<Link
 							className="btn btn-outline-secondary"
 							to={{ pathname: "/show", state: this.state.value }}
