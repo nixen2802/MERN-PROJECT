@@ -239,7 +239,7 @@ function Home() {
 								<div class="member d-flex align-items-start">
 									<div class="pic">
 										<img
-											src={img1}
+											src={img2}
 											class="img-fluid"
 											alt=""
 										/>
@@ -308,14 +308,14 @@ function Home() {
 							</div>
 
 							<div
-								class="col-lg-12 mt-4"
+								class="col-lg-6 mt-4"
 								data-aos="fade-up"
 								data-aos-delay="300"
 							>
 								<div class="member d-flex align-items-start">
 									<div class="pic">
 										<img
-											src={img3}
+											src={img2}
 											class="img-fluid"
 											alt=""
 										/>
