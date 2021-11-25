@@ -360,7 +360,7 @@ function Home() {
 					</div>
 					<div class="credits">
 						Designed by
-						<a href="#"> Rushabh, Nayan, Hussein</a>
+						<a href="https://github.com/nixen2802/FlutterStudentZone"> Rushabh, Nayan, Hussein</a>
 					</div>
 				</div>
 			</footer>
