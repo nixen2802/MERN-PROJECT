@@ -41,3 +41,13 @@ npm install {name of dependency}
 5. Print bill.
 6. Mail bill to the particular customer.
 </pre>
+
+# Contributors
+| Nayan | Rushabh | Hussein |
+|-------|---------|---------|
+| Login/resgiter module | Bills module | Customers module |
+| users module | Products module | Server |
+| Integration (database - server) | Server | User Interface |
+| Mailing facilty | User Interface | Testing |
+| Testing | Testing | Integration|
+
