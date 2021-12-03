@@ -23,11 +23,10 @@ npm install {name of dependency}
   
   <code><img height="50" src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg"></code>
   <code> <img height="50" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg"> </code>
-  <code> <img height="50" src="https://w7.pngwing.com/pngs/212/722/png-transparent-web-development-express-js-javascript-software-framework-laravel-world-wide-web-purple-blue-text.png"> </code>
+  <code> <img height="50" src="https://miro.medium.com/max/900/1*HTy1M1eFC7GoW6odSukQVw.png"> </code>
   <code> <img height="50" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg"> </code>
-  <code> <img height="50" src="https://blog.hyperiondev.com/wp-content/uploads/2018/09/Blog-Article-MERN-Stack.jpg"> </code>
-  <code> <img height="50" src="https://www.vectorlogo.zone/logos/getpostman/getpostman-ar21.svg"> </code>
-   <code><img height="50" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg"></code>
+  <code> <img height="50" src="https://www.stitchdata.com/blog/content/images/2018/04/pm-logo-horiz.png"> </code>
+  <code><img height="50" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg"></code>
 
   <hr>
   </p>
