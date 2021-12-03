@@ -18,6 +18,20 @@ In this era of technology it is very much tedious to manage bills of a small org
 # How to install all dependencies? 
 npm install {name of dependency}
 
+<img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="30px">&nbsp;***TECH-STACK***
+<p align="left">
+  
+  <code><img height="50" src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg"></code>
+  <code> <img height="50" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg"> </code>
+  <code> <img height="50" src="https://www.vectorlogo.zone/logos/expressjs/expressjs-ar21.svg"> </code>
+  <code> <img height="50" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg"> </code>
+  <code> <img height="50" src="https://blog.hyperiondev.com/wp-content/uploads/2018/09/Blog-Article-MERN-Stack.jpg"> </code>
+  <code> <img height="50" src="https://www.vectorlogo.zone/logos/getpostman/getpostman-ar21.svg"> </code>
+   <code><img height="50" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg"></code>
+
+  <hr>
+  </p>
+
 # Steps to start website locally:
 1. Clone the entire repository.
 2. Open entire folder in any code editor of your choice.
