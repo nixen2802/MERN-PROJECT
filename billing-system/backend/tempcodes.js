@@ -164,3 +164,16 @@ Mclient.connect(url, (err, db) => {
 			});
 	}
 });
+
+// previous mail file
+// transporter.sendMail({
+    // to:'rekhamandaliya28@gmail.com',
+    // from: 'hsnindustriesmern@gmail.com',
+    // subject: 'Bills notification from HSN industries',
+    // html:`http://localhost:3000/showbill/${req.body.billnumber}`,
+    // }).then(resp => {
+    // res.end("Success");
+    // })
+    // .catch(err => {
+    // console.log(err)
+    // })

@@ -18,6 +18,7 @@ export default class Customer_Detials extends React.Component {
 				customers: result.data,
 			});
 		});
+		console.log(this.state.value)
 	}
 	deleteCustomer(cust_id) {
 		this.setState({
@@ -39,15 +40,7 @@ export default class Customer_Detials extends React.Component {
 	render() {
 		const values = this.state.value;
 		const customer = this.state.customers.map((customer) => (
-			// <div style={{ border: "1px solid black" }} key={customer._id}>
-			//   <h3>{customer.cust_name}</h3>
-			//   <p>{customer.gst_no}</p>
-			//   <p>{customer.billing_address}</p>
-			//   <Link to={{pathname: `/updatecustomer/${customer._id}`, state: {value: this.state.value, customer: customer}}}>
-			//         <h1>Update Customer</h1>
-			//     </Link>
-			//     <button class="btn-primary btn" onClick={()=> this.deleteCustomer(customer._id)}>Delete customer</button>
-			// </div>
+			
 			<div className="col-xl-12 col-lg-12 col-md-12" key={customer._id}>
 				<div class="card customShadow" style={{ marginTop: "15px" }}>
 					<div class="card-header">Gst no : {customer.gst_no}</div>
@@ -131,6 +124,7 @@ export default class Customer_Detials extends React.Component {
 					<Link
 						to={{
 							pathname: "/addcustomer",
+							state: values
 							// state: this.state.value,
 						}}
 						style={{ color: "black" }}
@@ -217,7 +211,7 @@ export default class Customer_Detials extends React.Component {
 							<div style={{ color: "black" }} class="copyright">
 								&copy; Copyright{" "}
 								<strong>
-									<span>HSN</span>
+									<span>HRN</span>
 								</strong>
 								. All Rights Reserved
 							</div>

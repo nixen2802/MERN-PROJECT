@@ -125,6 +125,7 @@ export default class Detials extends React.Component {
 					<Link
 						to={{
 							pathname: "/addproducts",
+							state: values
 							// state: this.state.value,
 						}}
 						style={{ color: "black" }}
@@ -189,20 +190,7 @@ export default class Detials extends React.Component {
 				<div className="container">
 					<div className="row row-content" style={{ margin: "0px", marginTop: "100px" }}>{product}</div>
 					<div>
-						{/* <Link
-							to={{
-								pathname: "/addproducts",
-								state: this.state.value,
-							}}
-							className="btn btn-outline-secondary"
-							style={{
-								marginTop: "20px",
-								marginRight: "10px",
-								marginLeft: "20px",
-							}}
-						>
-							Add Product
-						</Link> */}
+						
 						<Link
 							className="btn btn-outline-secondary"
 							to={{ pathname: "/show", state: this.state.value }}
@@ -221,7 +209,7 @@ export default class Detials extends React.Component {
 							<div style={{ color: "black" }} class="copyright">
 								&copy; Copyright{" "}
 								<strong>
-									<span>HSN</span>
+									<span>HRN</span>
 								</strong>
 								. All Rights Reserved
 							</div>

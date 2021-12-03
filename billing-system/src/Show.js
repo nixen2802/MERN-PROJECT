@@ -76,42 +76,7 @@ export default class Detials extends React.Component {
 										<p>{bill.date_of_supply.toString().slice(0, 10)}</p>
 									</div>
 									<hr />
-									{/* <div className="customAlign">
-										<p>Total Amount : </p>
-										<p>{bill.total_amount - bill.gst}</p>
-									</div>
-									<hr />
-									<div className="customAlign">
-										<p>GST : </p>
-										<p>{bill.gst}</p>
-									</div>
-									<hr />
-									<div className="customAlign">
-										<p>Place Of Supply : </p>
-										<p>{bill.place_of_supply}</p>
-									</div>
-									<hr />
-									<div className="customAlign">
-										<p>Transporter Info : </p>
-										<p>{bill.transporter_info}</p>
-									</div>
-									<hr />
-									<div className="customAlign">
-										<p>GST NO : </p>
-										<p>{bill.gst_no}</p>
-									</div>
-									<hr />
-									<div className="customAlign">
-										<p>Billing address : </p>
-										<p
-											style={{
-												maxWidth: "200px",
-												textAlign: "end",
-											}}
-										>
-											{bill.billing_address}
-										</p>
-									</div> */}
+									
 									<div className="customAlign">
 										<p>Status : </p>
 										<p>{bill.status}</p>
@@ -253,50 +218,15 @@ export default class Detials extends React.Component {
 					style={{ margin: "0px", marginTop: "100px" }}
 				>
 					<div className="row row-content">{bill}</div>
-					{/* <div>
-						<Link
-							to={{
-								pathname: "/addbill",
-								state: values,
-							}}
-							className="btn btn-outline"
-							style={{
-								backgroundColor: "#fcf93c",
-								marginTop: "15px",
-								marginRight: "15px",
-								marginBottom: "15px",
-							}}
-						>
-							Add bill
-						</Link>
-						<Link
-							to={"/"}
-							className="btn"
-							style={{
-								backgroundColor: "#fcf93c",
-								marginTop: "15px",
-								marginRight: "15px",
-								marginBottom: "15px",
-							}}
-						>
-							Logout
-						</Link>
-					</div> */}
-					{/* <div>{renderElement()}</div> */}
+					
 				</div>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
+				<br /><br /><br /><br /><br /><br /><br />
 				<footer style={{background: "rgba(0, 0, 0, 0.1)"}} id="footer">
 					<div class="container" id="contact">
 						<div style={{color: "black"}} class="copyright">
 							&copy; Copyright{" "}
 							<strong>
-								<span>HSN</span>
+								<span>HRN</span>
 							</strong>
 							. All Rights Reserved
 						</div>
