@@ -1,0 +1,16 @@
+Environment requirements:
+1. Any code editor (Preffered VS code).
+2. Node js must be installed on system.
+3. MongoDB compass to view the changes into the databse.
+4. Postman for testing server.
+5. Any browser of your choice (Preffered chrome).
+6. Github desktop/ git bash.
+
+Dependencies: All the dependencies which are required are mentioned in the README file.
+
+Additional requirements: 
+1. An email having access to all third party softwares.
+2. VS code extentions (Bracket Pair Colorizer, change-case, Code Spell Checker, ES7 React/Redux/GraphQL/React-Native snippets, Prettier – Code formatted).
+
+
+
