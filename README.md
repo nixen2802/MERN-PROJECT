@@ -51,3 +51,5 @@ npm install {name of dependency}
 | Mailing facilty | User Interface | Testing |
 | Testing | Testing | Integration|
 
+
+<h3 align="center"><b>Developed with :heart: by <a href="https://github.com/rushabhgandhi13">Rushabh Gandhi</a>, <a href="https://github.com/hussein-hub">Hussein Motiwala</a>, <a href="https://github.com/nixen2802">Nayan Mandliya</a>.</b></h1>
