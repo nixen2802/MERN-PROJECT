@@ -41,7 +41,22 @@ npm install {name of dependency}
 5. Print bill.
 6. Mail bill to the particular customer.
 </pre>
+---
 
+<h2 align="center">
+Screenshots of the project
+</h2>
+
+![img](Screenshots/1.jpeg)
+![img](Screenshots/2.jpeg)
+![img](Screenshots/3.jpeg)
+![img](Screenshots/4.jpeg)
+![img](Screenshots/5.jpeg)
+![img](Screenshots/6.jpeg)
+![img](Screenshots/7.jpeg)
+![img](Screenshots/8.jpeg)
+
+---
 # Contributors
 | Nayan | Rushabh | Hussein |
 |-------|---------|---------|
